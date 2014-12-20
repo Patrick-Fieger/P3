@@ -14,12 +14,8 @@ angular.module('myApp.view1', ['ngRoute','ngAnimate'])
 	$scope.user="";
 	$scope.password="";
 
-
-	$scope.sendForm = function(){
-		$('#login,.spinner').addClass('active');
-		$timeout(function(){
-			$location.path("/kategorien");
-		},3000)
+	$scope.checkUser = function (){
+		
 	}
 
 }]);
