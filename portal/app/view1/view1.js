@@ -10,12 +10,24 @@ angular.module('myApp.view1', ['ngRoute','ngAnimate'])
 
 }])
 
-.controller('View1Ctrl', ['$scope','$location','$timeout',function($scope,$location,$timeout) {
-	$scope.user="";
-	$scope.password="";
+.controller('View1Ctrl', function($scope,$location,$timeout,$http) {
+	$scope.user="patrick@patrick-fieger.com";
+	$scope.fullname="Patrick Fieger";
+	$scope.password="123";
+	$scope.password_confirm="123";
+	$scope.city="Weinheim";
 
-	$scope.checkUser = function (){
-		
+	var data ={
+		"user":$scope.user,
+		"fullname":$scope.fullname,
+		"password":$scope.password,
+		"city":$scope.city
 	}
 
-}]);
+	$scope.sendajax = function(){
+		$http.put('http://localhost:5000/create', data).success(function(data){
+			console.log(data)
+		});
+	}
+
+});

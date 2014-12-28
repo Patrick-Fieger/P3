@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
   'ngRoute',
+  'ngResource',
   'ngAnimate',
   'myApp.view1',
   'myApp.view2',
@@ -17,4 +18,8 @@ config(['$routeProvider','$animateProvider', function($routeProvider,$animatePro
         $('body').scrollTop(0);
         $('.spinner').removeClass('active');
     });
-});
+})
+
+// .factory('Employees', function ($resource) {
+//     return $resource('http://localhost:5000/employees/:employeeId/:data');
+// })
