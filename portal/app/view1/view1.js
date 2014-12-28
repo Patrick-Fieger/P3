@@ -17,17 +17,15 @@ angular.module('myApp.view1', ['ngRoute','ngAnimate'])
 	$scope.password_confirm="123";
 	$scope.city="Weinheim";
 
-	var data ={
-		"user":$scope.user,
-		"fullname":$scope.fullname,
-		"password":$scope.password,
-		"city":$scope.city
-	}
-
 	$scope.sendajax = function(){
-		$http.put('http://localhost:5000/create', data).success(function(data){
+		var data ={
+			"user":$scope.user,
+			"fullname":$scope.fullname,
+			"password":$scope.password,
+			"city":$scope.city
+		}
+		$http.put('http://localhost:5000/create',data).success(function(data){
 			console.log(data)
 		});
 	}
-
 });

@@ -17,11 +17,11 @@ exports.createUser = function(req, res, next){
     geo.geocoder.geocode(d.city, function(err, res) {
         delete d.city;
         d.city = res[0];
-        registerUser(d);
-    });
+        registerUser(d,req, res, next);
+    },{ language: 'de' });
 }
 
-function registerUser(data){
+function registerUser(data,req, res, next){
     db.put('users', data.user, {
      "name": data.fullname,
      "email": data.user,
@@ -47,4 +47,12 @@ function registerUser(data){
     }, false)
     .then(function (res) {})
     .fail(function (err) {})
+}
+
+exports.getUser = function(req, res, next){
+  db.list('users')
+  .then(function (result) {
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(result.body.results));
+  });
 }

@@ -1,6 +1,5 @@
 var express = require('express'),
     register = require('./routes/register'),
-    // geo = require('./routes/geo'),
     app = express(),
     path = require('path'),
     httpServer = require('http-server'),
@@ -19,8 +18,6 @@ console.info('Server is running on port 8000 \nPlease open your browser and navi
 
 // app.use(express.static('www'));
 
-
-
 // CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
 app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -35,4 +32,4 @@ app.listen(app.get('port'), function () {
 
 app.use(bodyParser.json());
 app.put('/create', register.createUser);
-
+app.get('/getusers', register.getUser);
