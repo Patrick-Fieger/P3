@@ -33,7 +33,17 @@ angular.module('starter', ['ionic','ngResource', 'starter.controllers', 'starter
   .state('/login', {
     url: "/login",
     templateUrl: "templates/login.html",
-    controller: 'DashCtrl'
+    controller: 'Login'
+  })
+  .state('/register', {
+    url: "/register",
+    templateUrl: "templates/register.html",
+    controller: 'Register'
+  })
+  .state('/card', {
+    url: "/card",
+    templateUrl: "templates/card.html",
+    controller: 'Card'
   })
 
 

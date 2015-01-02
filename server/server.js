@@ -1,5 +1,7 @@
 var express = require('express'),
     register = require('./routes/register'),
+    login = require('./routes/login'),
+    user = require('./routes/user'),
     app = express(),
     bodyParser = require('body-parser');
 
@@ -15,5 +17,12 @@ app.listen(app.get('port'), function () {
 });
 
 app.use(bodyParser.json());
-app.put('/create', register.createUser);
-app.get('/getusers', register.getUser);
+
+
+app.post('/create', register.createUser);
+
+app.get('/getusers', user.getUser);
+app.get('/getuser', user.getUserInfo);
+
+
+app.post('/login', login.login);

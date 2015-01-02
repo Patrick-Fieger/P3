@@ -1,53 +1,21 @@
-<ion-view view-title="Login">
-  <ion-content class="padding">
-    <p>TEST</p>
-    <p>{{d}}</p>
-
-
-    <div class="list card">
-      <div class="item item-divider">Recent Updates</div>
-      <div class="item item-body">
-        <div>
-          There is a fire in <b>sector 3</b>
-        </div>
-      </div>
+<ion-view class="loginbg">
+<ion-content class="padding">
+<form ng-submit="login(user,password)" class="loginform">
+    <div class="list">
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Email</span>
+            <input required ng-model="data.email" type="email" placeholder="Email">
+        </label>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Passwort</span>
+            <input required ng-model="data.password" type="password" placeholder="Passwort">
+        </label>
+        <button type="submit" class="button loginbutton button-outline button-positive">
+        Login
+        </button>
     </div>
-    <div class="list card">
-      <div class="item item-divider">Health</div>
-      <div class="item item-body">
-        <div>
-          You ate an apple today!
-        </div>
-      </div>
-    </div>
-    <div class="list card">
-      <div class="item item-divider">Upcoming</div>
-      <div class="item item-body">
-        <div>
-          You have <b>29</b> meetings on your calendar tomorrow.
-        </div>
-      </div>
-    </div>
-  </ion-content>
+    <a href="#/register">oder melde dich an</a>
+</form>
 
-  <ion-tabs class="tabs-icon-top tabs-color-active-positive">
-
-
-  <ion-tab title="Status" icon-off="ion-ios7-pulse" icon-on="ion-ios7-pulse-strong" href="#/app/login">
-    <ion-nav-view name="app-login"></ion-nav-view>
-  </ion-tab>
-   <ion-tab title="Status" icon-off="ion-ios7-pulse" icon-on="ion-ios7-pulse-strong" href="#/app/login">
-    <ion-nav-view name="app-login"></ion-nav-view>
-  </ion-tab>
-   <ion-tab title="Status" icon-off="ion-ios7-pulse" icon-on="ion-ios7-pulse-strong" href="#/app/login">
-    <ion-nav-view name="app-login"></ion-nav-view>
-  </ion-tab>
-   <ion-tab title="Status" icon-off="ion-ios7-pulse" icon-on="ion-ios7-pulse-strong" href="#/app/login">
-    <ion-nav-view name="app-login"></ion-nav-view>
-  </ion-tab>
-  
-  
-
-  </ion-tabs>
-
+</ion-content>
 </ion-view>
