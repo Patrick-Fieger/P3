@@ -44,8 +44,6 @@ angular.module('starter.controllers', [])
 
         function success(pos){
             var crd = pos.coords;
-            // alert('Latitude : ' + );
-            // alert('Longitude: ' + );
             initCard(crd.latitude,crd.longitude)
         }
 
@@ -75,7 +73,6 @@ angular.module('starter.controllers', [])
                 }
             }
         ]);
-
 
         layer.on('click', function(e) {
             loadMessage(e.layer.feature.properties.id);
