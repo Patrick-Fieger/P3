@@ -1,23 +1,38 @@
+var url = 'http://localhost:5000/';
 angular.module('starter.services', [])
-.service('DatabaseService', function($http){
-	var url = 'http://localhost:5000/'
-	
+.service('UserService', function($http){
 	var login = function(data){
 		return $http.post(url + 'login', data)
 	};
-
 	var register = function(data){
 		return $http.post(url + 'create', data)
 	};
+	var logout = function(user){
 
+	};
+	var updatePassword = function(oldpassword, newpassword){
 
+	};
+	var deleteAccount = function(user){
+
+	};
+
+	return{
+		login : login,
+		register : register,
+		logout : logout,
+		updatePassword : updatePassword,
+		deleteAccount : deleteAccount
+	}
+})
+.service('MessageService', function($http){
 	var getMessagesAll = function(){
 
 	};
 	var getMessageById = function(id){
-	
+
 	};
-	var getMessagesFromUser = function( user){
+	var getMessagesFromUser = function(user){
 
 	};
 	var getCountFromMessage = function(id){
@@ -41,21 +56,6 @@ angular.module('starter.services', [])
 	var getMessagesByPeriod = function(from,  to){
 
 	};
-
-
-
-	var logout = function(user){
-
-	};
-	var updatePassword = function(oldpassword, newpassword){
-
-	};
-	var deleteAccount = function(user){
-
-	};
-
-
-
 	var deleteMessage = function(id){
 
 	};
@@ -66,10 +66,7 @@ angular.module('starter.services', [])
 
 	};
 
-
-	return{
-		Login : login,
-		Register : register,
+	return {
 		getMessagesAll : getMessagesAll,
 		getMessageById : getMessageById,
 		getMessagesFromUser : getMessagesFromUser,
@@ -80,9 +77,6 @@ angular.module('starter.services', [])
 		getMessagesByLocation : getMessagesByLocation,
 		getMessagesByTime : getMessagesByTime,
 		getMessagesByPeriod : getMessagesByPeriod,
-		logout : logout,
-		updatePassword : updatePassword,
-		deleteAccount : deleteAccount,
 		deleteMessage : deleteMessage,
 		updateMessage : updateMessage,
 		postMessage : postMessage
