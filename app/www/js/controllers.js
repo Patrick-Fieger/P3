@@ -1,12 +1,13 @@
 angular.module('starter.controllers', [])
 
-.controller('Login', function($scope, $http,$location) {
+.controller('Login', function($scope, $http,$location, DatabaseService) {
     $scope.data = {
         "email": "",
         "password": ""
     }
+
     $scope.login = function(user, password) {
-        $http.post('http://localhost:5000/login', $scope.data).then(checklogin, faillogin)
+        DatabaseService.Login($scope.data).success(checklogin).error(faillogin);
     }
 
     function checklogin() {
@@ -19,7 +20,7 @@ angular.module('starter.controllers', [])
         console.log('loggin failed');
     }
 })
-.controller('Register', function($scope, $http) {
+.controller('Register', function($scope, $http, DatabaseService) {
     $scope.data = {
         "fullname": "",
         "user": "",
@@ -27,7 +28,7 @@ angular.module('starter.controllers', [])
         "password": ""
     }
     $scope.register = function() {
-        $http.post('http://localhost:5000/create', $scope.data).then(registersucess, registerfail)
+        DatabaseService.Register($scope.data).success(registersucess).error(registerfail);
     }
 
     function registersucess() {
@@ -38,7 +39,7 @@ angular.module('starter.controllers', [])
         console.log('registerfail')
     }
 })
-.controller('Card', function($scope, $http) {
+.controller('Card', function($scope, $http, DatabaseService) {
     $scope.getCurrentPossition =function (){
         navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy: true});
 
@@ -75,14 +76,8 @@ angular.module('starter.controllers', [])
         ]);
 
         layer.on('click', function(e) {
-            loadMessage(e.layer.feature.properties.id);
+            DatabaseService.getMessageById(e.layer.feature.properties.id);
         });
-
-        function loadMessage(id){
-            alert(id)
-        }
     }
-
-
     $scope.getCurrentPossition();
 })
