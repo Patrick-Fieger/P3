@@ -3,16 +3,8 @@
 <form ng-submit="register()" class="loginform">
     <div class="list">
         <label class="item item-input item-floating-label">
-            <span class="input-label">Voller Name</span>
-            <input autofocus required ng-model="data.fullname" type="text" placeholder="Voller Name">
-        </label>
-        <label class="item item-input item-floating-label">
             <span class="input-label">Email</span>
-            <input required ng-model="data.user" type="email" placeholder="Email">
-        </label>
-        <label class="item item-input item-floating-label">
-            <span class="input-label">Wohnort</span>
-            <input required ng-model="data.city" type="text" placeholder="Wohnort">
+            <input required ng-model="data.email" type="email" placeholder="Email">
         </label>
         <label class="item item-input item-floating-label">
             <span class="input-label">Passwort</span>
@@ -24,6 +16,5 @@
     </div>
     <a href="#/login">oder logge dich ein</a>
 </form>
-
 </ion-content>
 </ion-view>

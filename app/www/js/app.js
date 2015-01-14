@@ -45,6 +45,11 @@ angular.module('starter', ['ionic','ngResource', 'starter.controllers', 'starter
     templateUrl: "templates/card.html",
     controller: 'CardCtrl'
   })
+  .state('/post', {
+    url: "/post",
+    templateUrl: "templates/post.html",
+    controller: 'SendMessage'
+  })
 
 
   $urlRouterProvider.otherwise('/login');

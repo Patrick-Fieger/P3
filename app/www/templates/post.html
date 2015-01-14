@@ -1,0 +1,25 @@
+<ion-view>
+<ion-content class="padding">
+<form ng-submit="sendMessage()" class="loginform">
+    <div class="list">
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Title</span>
+            <input required ng-model="Message.title" type="text" placeholder="Title">
+        </label>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Foto</span>
+            <input required ng-model="Message.photo" type="text" placeholder="Foto">
+        </label>
+
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Geschichte</span>
+            <textarea style="height:200px" required ng-model="Message.message" placeholder="Geschichte"></textarea>
+        </label>
+        <button type="submit" class="button loginbutton button-outline button-positive">
+            Speichern
+        </button>
+    </div>
+</form>
+
+</ion-content>
+</ion-view>

@@ -27,10 +27,10 @@ angular.module('starter.services', [])
 })
 .service('MessageService', function($http){
 	var getMessagesAll = function(){
-
+		return $http.get(url + 'messages')
 	};
 	var getMessageById = function(id){
-
+		alert(id)
 	};
 	var getMessagesFromUser = function(user){
 
@@ -62,8 +62,8 @@ angular.module('starter.services', [])
 	var updateMessage = function(message, id){
 
 	};
-	var postMessage = function(message, id){
-
+	var postMessage = function(message){
+		return $http.post(url + 'message', message)
 	};
 
 	return {

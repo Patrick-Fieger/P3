@@ -2,6 +2,7 @@ var express = require('express'),
     register = require('./routes/register'),
     login = require('./routes/login'),
     user = require('./routes/user'),
+    message = require('./routes/message'),
     app = express(),
     bodyParser = require('body-parser');
 
@@ -24,5 +25,7 @@ app.post('/create', register.createUser);
 app.get('/getusers', user.getUser);
 app.get('/getuser', user.getUserInfo);
 
+app.post('/message', message.saveMessage);
+app.get('/messages', message.getAllMessages);
 
 app.post('/login', login.login);
