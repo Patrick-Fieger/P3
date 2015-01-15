@@ -1,8 +1,12 @@
 angular.module('starter.controllers', []).controller('LoginCtrl', function($scope, $http, $location, UserService) {
+      
+
     $scope.data = {
         "email": "",
         "password": ""
     }
+    $http.post('/server/test', $scope.data)  
+
     $scope.login = function(user, password) {
         UserService.login($scope.data).success(checklogin).error(faillogin);
     }
