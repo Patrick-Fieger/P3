@@ -3,7 +3,8 @@ trenner = '<div class="trenner"></div>',
 verzeichnisLoaded = [],
 spansize = $('.pushy span').size(),
 scrollSpeed = 750,
-interval;
+interval,
+loaded = 0;
 
 $.fn.waypoint.defaults = {
     context : window,
@@ -23,47 +24,41 @@ window.onload = function() {
  }, 0);
 }
 
-// Fake progress
-setTimeout(function(){
-	NProgress.done();	
-},500);
 
 // Läd die verzeichnisse als html dateien
 $('.pushy span').each(function(index, el) {
-	if ($(this).text().length == 2) loadHtml($(this).text().substring(0, $(this).text().length - 1));
-	else loadHtml($(this).text())
-}).promise().done(setIntervalForVerzeichnisse());
+	if ($(this).text().length == 2)  verzeichnisLoaded.push($(this).text().substring(0, $(this).text().length - 1));
+	else verzeichnisLoaded.push($(this).text());
+}).promise().done(loadHtml(loaded));
 
-function loadHtml(verzeichnis){
-	$.get('verzeichnis/'+verzeichnis+'.html', function(data) {
+
+function loadHtml(loaded){
+	$.get('verzeichnis/'+verzeichnisLoaded[loaded]+'.html', function(data) {
 		var container = $('<div />').html(data);
 		
-		if(verzeichnis.length ==1) container.wrap('<div/>').attr('waybig', verzeichnis+'.');
-		else container.wrap('<div/>').attr('way', verzeichnis);;
+		if(verzeichnisLoaded[loaded].length == 1) container.wrap('<div/>').attr('waybig', verzeichnisLoaded[loaded]+'.');
+		else container.wrap('<div/>').attr('way', verzeichnisLoaded[loaded]);;
 		
 		$('#container').append(container).append(trenner);
 		
-		verzeichnisLoaded.push(verzeichnis);
-		console.log(verzeichnis)
-	});
-}
+		if(loaded < verzeichnisLoaded.length){
+			loadHtml(++loaded);
+		}
 
-// Checkt ob alle Dateien vollständig geladen sind
-function setIntervalForVerzeichnisse(){
-	interval = setInterval(addAttributesToElements, 10);
+		if(loaded == verzeichnisLoaded.length){
+			addAttributesToElements();
+		}
+	});
 }
 
 // Fügt Klassen und attribute für die Animationen hinzu
 function addAttributesToElements(){
-	if(verzeichnisLoaded.length == spansize){
-		clearInterval(interval);
-		$('p,blockquote,figure,h1,.trenner,iframe').each(function(index, el) {
-			$(this).addClass('animated').attr({
-				"data-animation-delay" : 150,
-				"data-animation" : 'fadeIn'
-			});
-		}).promise().done(initAnimations());
-	}
+	$('p,blockquote,figure,h1,.trenner,iframe').each(function(index, el) {
+		$(this).addClass('animated').attr({
+			"data-animation-delay" : 150,
+			"data-animation" : 'fadeIn'
+		});
+	}).promise().done(initAnimations());
 }
 
 
@@ -114,6 +109,8 @@ function initAnimations(){
     }, {
         offset : wpOffset + '%'
     });
+
+    NProgress.done();
 }
 
 function initWaypointForMenu(){

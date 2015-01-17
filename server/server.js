@@ -19,8 +19,6 @@ app.listen(app.get('port'), function () {
 
 app.use(bodyParser.json());
 
-
-
 var mongoose = require("mongoose");
 mongoose.connect("mongodb://patrickf_mongoadmin:OafecDyg,@localhost:20799/p3",{auth:{authdb:"admin"}});
 
@@ -48,12 +46,3 @@ app.post('/test',function(){
 // app.get('/messages', message.getAllMessages);
 
 // app.post('/login', login.login);
-
-// var http = require('http');
-// http.createServer(function (req, res) {
-//   res.writeHead(200, {'Content-Type': 'text/plain'});
-//   res.end('Hello World\n');
-//   console.log('wefpomwefpom')
-
-// }).listen(61000, "127.0.0.1");
-// console.log('Server running at http://127.0.0.1:61000/');
