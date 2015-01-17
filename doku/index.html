@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta name="viewport" content="width=device-width">
+        <title>P3 Doku</title>
+        <link href='http://fonts.googleapis.com/css?family=Slabo+27px|Oswald:400,700' rel='stylesheet' type='text/css'>
+            <link href='css/normalize.css' rel='stylesheet' />
+            <link href='css/foundation.css' rel='stylesheet' />
+            <link href='css/animate.css' rel='stylesheet' />
+            <link href='css/style.css' rel='stylesheet' />
+        </head>
+        <body onunload="">
+
+        	<!-- Navigation -->
+            <nav class="pushy pushy-left">
+                <ul>
+                    <li><a class="main" href="#"><span>1.</span> Intro</a></li>
+                    <li><a class="main" href="#"><span>2.</span> Übersicht</a></li>
+
+                    <li>
+                        <a class="main" href=""><span>3.</span> Ideenphase</a>
+                        <ul>
+                            <li><a href="#"><span>3.1</span> Aufgabenstellung</a></li>
+                            <li><a href="#"><span>3.2</span> Ideenfindung</a></li>
+                            <li><a href="#"><span>3.3</span> Die Idee</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a class="main" href="#"><span>4.</span> Recherche</a>
+                        <ul>
+                            <li><a href="#"><span>4.1</span> Sozialnetzwerk-Statistiken</a></li>
+                            <li><a href="#"><span>4.2</span> Zielgruppe</a></li>
+                            <li><a href="#"><span>4.3</span> Persona(s)</a></li>
+                            <li><a href="#"><span>4.4</span> Bedürfnisse/Probleme</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li>
+                        <a class="main" href="#"><span>5.</span> Konzept</a>
+                        <ul>
+                            <li><a href="#"><span>5.1</span> Vision/Mission</a></li>
+                            <li><a href="#"><span>5.2</span> Szenario</a></li>
+                            <li><a href="#"><span>5.3</span> Ziele</a></li>
+                            <li><a href="#"><span>5.4</span> Anwendungscharakter</a></li>
+                            <li><a href="#"><span>5.5</span> Anwendungsbeispiele</a></li>
+                            <li><a href="#"><span>5.6</span> Wie sieht die Zukunft aus?</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a class="main" href="#"><span>6.</span> Entwicklung</a>
+                        <ul>
+                            <li><a href="#"><span>6.1</span> Walkthrough</a></li>
+                            <li><a href="#"><span>6.2</span> Design</a></li>
+                            <li><a href="#"><span>6.3</span> Interaktionen</a></li>
+                            <li><a href="#"><span>6.4</span> Screens</a></li>
+                            <li><a href="#"><span>6.5</span> Animation</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a class="main" href="#"><span>7.</span> Programmierung</a>
+                        <ul>
+                            <li><a href="#"><span>7.1</span> Wireframes</a></li>
+                            <li><a href="#"><span>7.2</span> Technik</a></li>
+                            <li><a href="#"><span>7.3</span> Aufbau</a></li>
+                            <li><a href="#"><span>7.4</span> Datenbankschema</a></li>
+                            <li><a href="#"><span>7.5</span> Management</a></li>
+                            <li><a href="#"><span>7.6</span> Zeitplan</a></li>
+                            <li><a href="#"><span>7.7</span> Businessplan</a></li>
+                            <li><a href="#"><span>7.8</span> Finanzierungsplan</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Menu Icon öffnen/schließen Menu -->
+            <span class="menu-btn si-icon si-icon-hamburger-cross" data-icon-name="hamburgerCross"></span>
+            
+            <!-- In diesen Container werden unsere Texte geladen -->
+            <div id="container"></div>
+            
+
+            <script src='js/core/jquery.js'></script>
+            <script src="js/core/easing.js"></script>
+            <script src="js/core/pushy.min.js"></script>
+            <script src="js/core/snap.js"></script>
+            <script src="js/core/fitvideos.js"></script>
+            <script src="js/core/mousewheel.js"></script>
+            <script src="js/core/scrollpane.js"></script>
+            <script src="js/core/way.js"></script>
+            <script src="js/core/svgicons-config.js"></script>
+            <script src="js/core/svgicons.js"></script>
+            <script src="js/core/lightbox.js"></script>
+            <script src='js/core/nprogress.js'></script>
+            <script>
+            	NProgress.configure({
+            	    showSpinner: false
+            	});
+            	NProgress.start();
+            	[].slice.call( document.querySelectorAll( '.si-icon' ) ).forEach( function( el ) {
+            	var svgicon = new svgIcon( el, svgIconConfig );
+            	} );
+            new svgIcon( document.querySelector( '.si-icons-easing .si-icon-hamburger-cross' ),
+            	svgIconConfig,
+            	{ easing : mina.elastic, speed: 600 }
+            );
+            </script>
+            <script src='js/custom/app.js'></script>
+        </body>
+    </html>

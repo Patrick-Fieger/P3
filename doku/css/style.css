@@ -1,0 +1,349 @@
+body,html{
+  margin: 0;
+  padding: 0;
+/*  font-family: 'Oswald', sans-serif;*/
+  font-family: 'Slabo 27px', serif;
+}
+
+.animated{
+  visibility: hidden;
+}
+
+.visible{
+  visibility: visible;
+}
+
+.hidden{
+  overflow: hidden;
+}
+
+article p{
+  letter-spacing: 0.01rem;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+article h1{
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 36px;
+  margin-left: -12px;
+  line-height: 1.2;
+  margin-top: 40px;
+  margin-bottom: 14px;
+}
+
+article figure{
+  position: relative;
+  margin: 80px 0;
+  clear: both;
+  outline: none;
+  box-sizing: border-box;
+}
+
+article figure img{
+  display: block;
+  margin: 0 auto
+}
+
+.imageCaption{
+  position: absolute;
+  left: -172px;
+  width: 150px;
+  top: 0;
+  text-align: right;
+  margin-top: 0;
+  font-family: "freight-text-pro",Georgia,Cambria,"Times New Roman",Times,serif;
+  letter-spacing: 0.01rem;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(0,0,0,0.6);
+  outline: 0;
+  z-index: 300;
+}
+
+.imageCaption:before{
+  width: 25%;
+  margin-left: 75%;
+  border-top: 1px solid rgba(0,0,0,0.15);
+  display: block;
+  content: "";
+  margin-bottom: 10px;
+}
+
+blockquote{
+  line-height: 1.4;
+  text-align: center;
+  font-size: 32px;
+  margin: 48px -160px;
+  border: none;
+  padding: 0;
+  letter-spacing: 0.01rem;
+  font-weight: 400;
+  font-style: italic;
+}
+
+article iframe{
+  margin: 30px 0;
+}
+
+/*CONTAINER*/
+#container{
+  padding-top: 100px;
+  width: 800px;
+  margin-left: 300px;
+}
+
+/*LOADING BAR*/
+
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: #29d;
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+}
+
+/*ICON STYLE*/
+.menu-btn {
+  margin: 0 0 0 20px;
+  display: block;
+  width: 65px;
+  height: 65px;
+  position: fixed;
+  top: 15px;
+  z-index: 1000;
+}
+
+.menu-btn:hover{
+  cursor: pointer;  
+}
+
+svg path{
+  stroke: #000;
+  fill:#000;
+}
+
+/*TRENNER*/
+
+.trenner{
+  width: 100%;
+  height: 80px;
+  float: left;
+  position: relative;
+  margin: 50px 0;
+}
+
+.trenner:before{
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 38px;
+  margin-left: -100px;
+  width: 200px;
+  height: 2px;
+  background: #ccc;
+}
+
+/*MENU STYLE*/
+
+.pushy{
+    position: fixed;
+    width: 260px;
+    height: 100%;
+    top: 0;
+    z-index: 9999;
+    background: transparent;
+    font-size: 0.9em;
+    font-weight: bold;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch; /* enables momentum scrolling in iOS overflow elements */
+    padding-top: 10px;
+}
+
+.pushy a{
+    font-weight: 300;
+    display: block;
+    color: #666;
+    padding: 5px 10px;
+    text-decoration: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.pushy li ul a span{
+  margin-right: 7px;
+}
+
+.pushy a.main{
+  font-weight: bolder;
+  color: #222
+}
+
+.pushy a:hover{
+    color: #000;
+}
+
+.pushy a.active{
+  text-decoration: underline;
+}
+
+.pushy-left{
+    -webkit-transform: translate3d(-260px,0,0);
+    -moz-transform: translate3d(-260px,0,0);
+    -ms-transform: translate3d(-260px,0,0);
+    -o-transform: translate3d(-260px,0,0);
+    transform: translate3d(-260px,0,0);
+}
+
+.pushy-open{
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+.container-push, .push-push{
+    -webkit-transform: translate3d(260px,0,0);
+    -moz-transform: translate3d(260px,0,0);
+    -ms-transform: translate3d(260px,0,0);
+    -o-transform: translate3d(260px,0,0);
+    transform: translate3d(260px,0,0);
+}
+
+.menu-btn-push{
+    margin-left:200px;
+}
+
+/* Menu Transitions */
+.pushy, #container, .push, .menu-btn{
+    -webkit-transition: -webkit-transform .2s cubic-bezier(.16, .68, .43, .99);
+    -moz-transition: -moz-transform .2s cubic-bezier(.16, .68, .43, .99);
+    -o-transition: -o-transform .2s cubic-bezier(.16, .68, .43, .99);
+    transition: transform .2s cubic-bezier(.16, .68, .43, .99);
+}
+
+
+/*SCROLLPANE*/
+
+
+/*
+ * CSS Styles that are needed by jScrollPane for it to operate correctly.
+ *
+ * Include this stylesheet in your site or copy and paste the styles below into your stylesheet - jScrollPane
+ * may not operate correctly without them.
+ */
+
+.jspContainer
+{
+  overflow: hidden;
+  position: relative;
+}
+
+.jspPane
+{
+  position: absolute;
+}
+
+.jspVerticalBar
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3px;
+  height: 100%;
+}
+
+.jspHorizontalBar
+{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 16px;
+
+}
+
+.jspCap
+{
+  display: none;
+}
+
+.jspHorizontalBar .jspCap
+{
+  float: left;
+}
+
+.jspTrack
+{
+  background: transparent;
+  position: relative;
+}
+
+.jspDrag
+{
+  background: #000;
+  position: relative;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.jspHorizontalBar .jspTrack,
+.jspHorizontalBar .jspDrag
+{
+  float: left;
+  height: 100%;
+}
+
+
+.jspVerticalBar .jspArrow
+{
+  height: 16px;
+}
+
+.jspHorizontalBar .jspArrow
+{
+  width: 16px;
+  float: left;
+  height: 100%;
+}
+
+.jspVerticalBar .jspArrow:focus
+{
+  outline: none;
+}
+
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner
+{
+  margin: 0 -3px 0 0;
+}
+
+
+@media screen and (max-width: 1260px) {
+  #container{
+    width: 100%;
+    margin-left: 0;
+    padding-left: 300px; 
+  }
+}
+
+
+
+
