@@ -10,11 +10,34 @@ app.config([
             url: "/",
             controller: "Login",
             templateUrl: "js/templates/login.html"
+        })
+        .state("/login", {
+            url: "/login",
+            controller: "Login",
+            templateUrl: "js/templates/login.html"
+        })
+        .state("/register", {
+            url: "/register",
+            controller: "Register",
+            templateUrl: "js/templates/register.html"
+        })
+        .state("/navigate", {
+            url: "/navigate",
+            controller: "Navigate",
+            templateUrl: "js/templates/navigate.html"
+        })
+        .state("/message", {
+            url: "/message",
+            controller: "Message",
+            templateUrl: "js/templates/message.html"
         });
     }
 ]);
 var ctrl = angular.module('app.ctrl', ['ngAnimate'])
-.controller('Login', Login);
+.controller('Login', Login)
+.controller('Register', Register)
+.controller('Navigate', Navigate)
+.controller('Message', Message)
 
 
 app.run(['$rootScope','$timeout',function($rootScope,$timeout) {
@@ -27,7 +50,6 @@ app.run(['$rootScope','$timeout',function($rootScope,$timeout) {
             NProgress.done();
         },5000);
     });
-
 
     $rootScope.$on('$stateChangeStart', function(ev, to, toParams, from, fromParams) {
         NProgress.start();

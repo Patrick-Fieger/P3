@@ -1,4 +1,4 @@
-var url = 'http://localhost:5000/';
+var url = 'http://project-go.me/server/';
 angular.module('app.services', [])
 .service('UserService', function($http){
 	var login = function(data){
@@ -65,6 +65,15 @@ angular.module('app.services', [])
 	var postMessage = function(message){
 		return $http.post(url + 'message', message)
 	};
+	var sendPhoto = function(photo){
+		var formData = new FormData();
+		formData.append('files', photo);
+
+		return $http.post(url + 'photo', formData, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        });		
+	};
 
 	return {
 		getMessagesAll : getMessagesAll,
@@ -79,6 +88,37 @@ angular.module('app.services', [])
 		getMessagesByPeriod : getMessagesByPeriod,
 		deleteMessage : deleteMessage,
 		updateMessage : updateMessage,
-		postMessage : postMessage
+		postMessage : postMessage,
+		sendPhoto: sendPhoto
 	}
-});
+}).directive('fileModel', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+            
+            element.bind('change', function(){
+                scope.$apply(function(){
+                    modelSetter(scope, element[0].files[0]);
+                });
+            });
+        }
+    };
+}]).service('fileUpload', ['$http', function ($http) {
+    this.uploadFileToUrl = function(file, uploadUrl){
+        var fd = new FormData();
+        fd.append('file', file);
+        $http.post(uploadUrl, fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        })
+        .success(function(){
+        })
+        .error(function(){
+        });
+    }
+}]);
+
+
+

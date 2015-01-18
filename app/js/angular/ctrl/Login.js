@@ -1,23 +1,19 @@
-var Login = ['$scope', '$http','UserService',function ($scope, $http,UserService) {
+var Login = ['$scope', '$http','UserService','$location',function ($scope, $http,UserService,$location) {
     $scope.data = {
         "email": "",
         "password": ""
     }
-    
-
-    $http.post('http://project-go.me/server/test', $scope.data)  
 
     $scope.login = function(user, password) {
         UserService.login($scope.data).success(checklogin).error(faillogin);
     }
 
-    function checklogin() {
-        console.log('loggin');
+    function checklogin(data, status, headers, config) {
         localStorage.setItem('user', $scope.data.email);
-        $location.path('/card');
+        $location.path('/navigate');
     }
 
-    function faillogin() {
-        console.log('loggin failed');
+    function faillogin(data, status, headers, config) {
+        console.log(status);
     }
 }];

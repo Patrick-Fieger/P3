@@ -1,50 +1,58 @@
-var token = "6085eff8-6f7f-4b90-9606-19769a785c5a";
-var db = require('orchestrate')(token);
-var uuid = require('node-uuid');
+var mongoose = require("mongoose");
+var uuid = require('node-uuid'),
+    formidable = require('formidable'),
+    util = require('util')
+    fs   = require('fs-extra');
+
+var User = mongoose.model('user');
 
 
+User.find().remove().exec();
 
-exports.saveMessage = function(req, res, next) {
-    var d = req.body;
-    var u = d.user;
-    d.id = uuid.v4();
-    delete d.user
 
-   	db.get('messages', u)
-	.then(function (result) {
-		var update = result.body.messages;
-		var arr =[];
-		for( var i in update ) {
-		    if (update.hasOwnProperty(i)){
-		       arr.push(update[i]);
-		    }
-		}
-		setTimeout(function(){
-			arr.push(d);
-			console.log(d)
-			db.merge('messages', u, {
-			  "messages": arr
-			})
-			.then(function (result) {
-				console.log('Message SAVED!!!')
-			})
-			.fail(function (err) {
-				console.log('Message FAIL!!!')
-			});
-		},100);
+exports.uploadPhoto = function(req, res) {
+	var form = new formidable.IncomingForm();
+  	// form.uploadDir = '../html/uploads/';
+  	form.encoding = 'binary';
+	
+  	form.addListener('end', function() {
+  	  var name = this.openedFiles[0].name
+  	  res.send(this.openedFiles[0].name).status(200).end();
+
+  	    var temp_path = this.openedFiles[0].path;
+        /* The file name of the uploaded file */
+        var file_name = this.openedFiles[0].name;
+        /* Location where we want to copy the uploaded file */
+        var new_location = '../html/uploads/';
+ 
+        fs.copy(temp_path, new_location + file_name, function(err) {  
+            if (err) {
+                console.error(err);
+            } else {
+                console.log('saved: '+name)
+            }
+        });
+
+  	});
+	
+  	form.parse(req, function(err, fields, files) {
+  	  if (err) {
+  	    console.log(err);
+  	  }
+  	});
+}
+
+exports.saveMessage = function(req, res) {
+	var d = req.body;
+	var email = d.email;
+	delete(d.email);
+	d.id = uuid.v4();
+
+	User.findOne({email: email}, function(err, user) {
+		user.messages.push(d)
+		user.save(function (err) {
+    	if (err) res.status(400).end();
+    		res.status(200).end();
+  		});
 	});
-}
-
-exports.getAllMessages = function(req, res, next) {
-
-
-	db.list('messages').then(function (result) {
-	  res.setHeader('Content-Type', 'application/json');
-      res.end(JSON.stringify(result.body.results));
-	})
-	.fail(function (err) {
-		console.log(err)
-	})
-
-
-}
+};
