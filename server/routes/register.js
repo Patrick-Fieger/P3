@@ -4,6 +4,7 @@ var User = mongoose.model('user',
     {
         email: String,
         password: String,
+        readed: [],
         messages : []
     }
 );
@@ -15,6 +16,7 @@ exports.createUser = function(req, res, next) {
         { 
             email: d.email,
             password: d.password,
+            readed: [],
             messages : []
         }
     );

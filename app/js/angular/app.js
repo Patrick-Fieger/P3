@@ -1,4 +1,4 @@
-var app = angular.module('p3', ['ui.router','ngSanitize','ngAnimate','app.ctrl','app.services']);
+var app = angular.module('p3', ['ui.router','ngSanitize','ngAnimate','app.ctrl','app.services','geolocation']);
 app.config([
     '$locationProvider','$stateProvider','$urlRouterProvider','$animateProvider',
     function($locationProvider,$stateProvider,$urlRouterProvider,$animateProvider) {

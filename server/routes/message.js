@@ -5,11 +5,6 @@ var uuid = require('node-uuid'),
     fs   = require('fs-extra');
 
 var User = mongoose.model('user');
-
-
-User.find().remove().exec();
-
-
 exports.uploadPhoto = function(req, res) {
 	var form = new formidable.IncomingForm();
   	// form.uploadDir = '../html/uploads/';

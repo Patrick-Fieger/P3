@@ -1,9 +1,5 @@
-var Message = ['$scope', '$http', 'MessageService', '$location','fileUpload',
-    function($scope, $http, MessageService, $location,fileUpload) {
-        navigator.geolocation.getCurrentPosition(success, error, {
-            enableHighAccuracy: true
-        });
-        var crd;
+var Message = ['$scope', '$http', 'MessageService', '$location','fileUpload','geolocation',
+    function($scope, $http, MessageService, $location,fileUpload,geolocation) {
         $scope.Message = {
             email: localStorage.getItem('user'),
             position: [],
@@ -15,13 +11,11 @@ var Message = ['$scope', '$http', 'MessageService', '$location','fileUpload',
             message: ""
         }
 
-        function success(pos) {
-            crd = pos.coords;
-        }
-
-        function error(){
-            alert('Geolocation konnte nicht ermittelt werden');
-        }
+        geolocation.getLocation({enableHighAccuracy: true}).then(function(data){
+            alert(data.coords.accuracy)
+            $scope.Message.position[0] = data.coords.latitude;
+            $scope.Message.position[1] = data.coords.longitude;
+        });
 
         $scope.sendMessage = function() {
             MessageService.sendPhoto($scope.photo).success(sendDetails).error(photofail);
@@ -33,8 +27,6 @@ var Message = ['$scope', '$http', 'MessageService', '$location','fileUpload',
 
         function sendDetails(data) {
             var currentdate = new Date();
-            $scope.Message.position[0] = crd.latitude;
-            $scope.Message.position[1] = crd.longitude;
             $scope.Message.date[1] = currentdate.getHours() + ":" + currentdate.getMinutes();
             $scope.Message.photo = data;
             MessageService.postMessage($scope.Message).success(MessageSaved).error(MessageSavedFail);
