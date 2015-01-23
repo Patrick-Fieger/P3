@@ -1,3 +1,12 @@
+Date.prototype.toDateInputValue = (function() {
+    var local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
+});
+
+// alert(new Date().toDateInputValue())
+
+
 var Message = ['$scope', '$http', 'MessageService', '$location','fileUpload','geolocation',
     function($scope, $http, MessageService, $location,fileUpload,geolocation) {
         $scope.Message = {
@@ -6,13 +15,14 @@ var Message = ['$scope', '$http', 'MessageService', '$location','fileUpload','ge
             photo: "",
             readed: 0,
             id: "",
-            date: [],
+            date: [new Date().toDateInputValue(),''],
             title: "",
             message: ""
         }
 
+
+
         geolocation.getLocation({enableHighAccuracy: true}).then(function(data){
-            alert(data.coords.accuracy)
             $scope.Message.position[0] = data.coords.latitude;
             $scope.Message.position[1] = data.coords.longitude;
         });

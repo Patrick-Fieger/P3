@@ -1,6 +1,30 @@
-﻿#nprogress {
+﻿body{
+  font-family: 'Muli', sans-serif;
+  background:rgba(242,239,225,0.9)
+}
+
+.date{
+  font-family: "futura-pt";
+}
+
+#nprogress {
   pointer-events: none;
 }
+
+.container,
+.messageform{
+  -webkit-transition: all .25s ease-in-out;
+  -moz-transition: all .25s ease-in-out;
+  -o-transition: all .25s ease-in-out;
+  transition: all .25s ease-in-out;
+}
+/*
+.messageform{
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}*/
 
 #nprogress .bar {
   background: #29d;
@@ -12,6 +36,78 @@
   height: 2px;
 }
 
+button{
+  transition-duration: .3s;
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 3px;
+  background: 0 0;
+  text-shadow: none;
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  font-weight: lighter;
+  -webkit-appearance:none;
+  height: 50px;
+}
+
+button:active{
+  outline: none;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.3),0 1px 0 #fff;
+  text-shadow: 0 1px 0 rgba(255,255,255,.4);
+  transition-duration: 0s;
+  background: 0 0;
+  color: #222;
+  border: 1px solid #222;
+}
+
+form input,
+form textarea,
+form button{
+  float: left;
+  clear: both;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  box-shadow: none;
+  border-radius: none;
+  outline: 0;
+}
+
+form input,
+form textarea{
+  padding: 10px;
+  border: none;
+  border-bottom: solid 2px #c9c9c9;
+  transition: border 0.3s;
+  margin-bottom: 10px;
+}
+
+form textarea{
+  margin-bottom: 50px;
+  height: 150px;
+}
+
+form input:focus,
+form textarea:focus{
+  border-bottom: solid 2px #969696;
+}
+
+
+.container{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(100,100,100,1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(100,100,100,1);
+  box-shadow: 0px 0px 10px 0px rgba(100,100,100,1);
+}
+
+.container.active{
+  opacity: 0.5;
+  transform: scale(0.95);
+}
 
 [ui-view].ng-enter, [ui-view].ng-leave {
     position: absolute;
@@ -34,3 +130,214 @@
 [ui-view].ng-leave-active {
     opacity: 0;
 }
+
+/*MESSAGE*/
+
+.messageform{
+  padding: 30px;
+}
+
+.messageform input,
+.messageform textarea{
+  background: transparent;
+}
+
+
+
+/*NAVIGATE*/
+
+.card_bg{
+  background-image: url(../img/bg_nav.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+
+
+.navigate_wrapper{
+  background-color: rgba(242,239,225,0.9);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.compass,
+.compass_item,
+.compass_wrapper{
+  width: 260px;
+  height: 260px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -130px 0 0 -130px;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+/*  -webkit-transition: all .1s;
+  -moz-transition: all .1s;
+  -o-transition: all .1s;
+  transition: all .1s;*/
+}
+
+.compass_wrapper {
+margin-top: -180px;
+}
+
+.compass_item{
+  top: 0;
+  left: 0;
+  margin: 0 !important
+}
+
+.compass_wrapper{
+  background: url(../img/nadel.png);
+  background-size: 100%;
+}
+
+.compass_item{
+  /*background: rgba(0,0,0,0.5);*/
+}
+
+/*.compass_item:before{
+  content:"";
+  position: absolute;
+  top: -30px;
+  width: 20px;
+  height: 20px;
+  background: red;
+  left: 50%;
+  margin-left: -10px;
+  border-radius: 50%;
+}*/
+
+.compass_item p{
+  text-align: center;
+  position: relative;
+  width: 100%;
+  margin-top: -40px
+}
+
+.compass_item:after{
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0;
+  background: url(../img/nadel_einzeln.png);
+  width: 100%;
+  height: 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  /*margin-left: -19.5px;*/
+}
+
+/*NAVIGATE FOOTER*/
+
+.messagecanread{
+  position: absolute;
+  bottom: 110px;
+  width: 200px;
+  padding: 15px 0;
+  text-align: center;
+  color: #fff;
+  background: #be6d5f;
+  left: 50%;
+  z-index: 100;
+  margin-left: -100px;
+  border-radius: 2px;
+  font-size: 18px;
+  border: 3px solid #d8afa1;
+}
+
+.footer{
+  /*background: white;*/
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 80px;
+  z-index: 1000;
+}
+
+.footer a{
+  color: #646464;
+}
+
+.postmessage{
+  position: absolute;
+  background: url(../img/plus.png);
+  width: 60px;
+  height: 60px;
+  left: 50%;
+  background-size: 100%;
+  margin-left: -30px;
+  top: 0px;
+}
+
+.settingsicon,
+.showcard{
+  top: 19px;
+  font-size: 40px;
+  position: absolute;
+}
+
+.settingsicon{
+  left: 30px;
+}
+
+.showcard{
+  right: 30px
+}
+
+
+
+/*ICON FONTS*/
+
+@font-face {
+  font-family: 'icomoon';
+  src:url('fonts/icomoon.eot?-5a7sep');
+  src:url('fonts/icomoon.eot?#iefix-5a7sep') format('embedded-opentype'),
+    url('fonts/icomoon.woff?-5a7sep') format('woff'),
+    url('fonts/icomoon.ttf?-5a7sep') format('truetype'),
+    url('fonts/icomoon.svg?-5a7sep#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-compass:before {
+  content: "\e600";
+}
+
+.icon-location:before {
+  content: "\e947";
+}
+
+.icon-facebook30:before {
+  content: "\e601";
+}
+
+.icon-settings21:before {
+  content: "\e602";
+}
+
+
+

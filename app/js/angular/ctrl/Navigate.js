@@ -3,12 +3,11 @@ var Navigate = ['$scope', '$http','UserService','$location','geolocation',functi
 	$scope.p1;
 	$scope.p2 = new LatLon(49.544964, 8.660270); 
 	$scope.compass;
+	$scope.alpha
 
 	window.addEventListener('deviceorientation', function(e) {
 		$scope.compass = e.webkitCompassHeading;
-
-		console.log(e.alpha)
-
+		$scope.alpha = e.alpha
 	}, false);
 
 	function isGeoSetted(){
@@ -27,8 +26,18 @@ var Navigate = ['$scope', '$http','UserService','$location','geolocation',functi
 	function calculateDistanceAndBearing (compass) {
 		var dist = $scope.p1.distanceTo($scope.p2);
 		var brng = $scope.p1.bearingTo($scope.p2);
-		var heading = (brng - compass );
-		//console.log(heading)
+		var rotade = 360 - compass;
+		var heading = 0 + brng;
+		$(".compass").css({ "transform": "rotate(" + rotade + "deg)"});
+		$(".compass_item").css({ "transform": "rotate(" + heading + "deg)"});
+		$(".compass_item p").css({ "transform": "rotate(" + -(rotade + heading)  + "deg)"});
+	}
+
+	$scope.showmessage = function(){
+		$('.container').addClass('active');
+		setTimeout(function(){
+			$('.messageform').addClass('active');
+		},300)
 	}
 
 	setInterval(function(){

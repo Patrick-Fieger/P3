@@ -5,6 +5,13 @@ var uuid = require('node-uuid'),
     fs   = require('fs-extra');
 
 var User = mongoose.model('user');
+
+
+User.update({email:"a@a.de"}, { $set: { messages: [] }}, function(err, affected){
+    console.log('affected: ', affected);
+});
+
+
 exports.uploadPhoto = function(req, res) {
 	var form = new formidable.IncomingForm();
   	// form.uploadDir = '../html/uploads/';

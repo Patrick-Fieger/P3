@@ -1248,8 +1248,6 @@ a {
   color: #2ba6cb;
   text-decoration: none;
   line-height: inherit; }
-  a:hover, a:focus {
-    color: #258faf; }
   a img {
     border: none; }
 
