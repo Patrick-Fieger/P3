@@ -1,15 +1,15 @@
 <div class="navigate_wrapper">
     <div class="compass_wrapper">
         <div class="compass">
-            <div class="compass_item">
-                <p>320 m</p>
+            <div class="compass_item" ng-repeat="message in messages" id="{{message.id}}">
+                <p>{{message.distance | distance}}</p>
             </div>
         </div>
     </div>
 </div>
 <div class="card_bg"></div>
 
-<a href="" class="messagecanread">Ereignis lesen</a>
+<a ng-show="lesen" href="" class="messagecanread">Ereignis lesen</a>
 
 <div class="footer">
 	<a href="/settings" class="icon-settings21 settingsicon"></a>

@@ -27,10 +27,10 @@ angular.module('app.services', [])
 })
 .service('MessageService', function($http){
 	var getMessagesAll = function(){
-		return $http.get(url + 'messages')
+		//return $http.get(url + 'messages')
 	};
 	var getMessageById = function(id){
-		alert(id)
+		return $http.post(url + 'messagebyid',{id:id})
 	};
 	var getMessagesFromUser = function(user){
 
@@ -47,8 +47,8 @@ angular.module('app.services', [])
 	var getLocationFromMessage = function(id){
 
 	};
-	var getMessagesByLocation = function(longitude, latitude){
-
+	var getNearestMessagesByLocation = function(position){
+		return $http.post(url + 'messageslocation',{pos:position})
 	};
 	var getMessagesByTime = function(date){
 
@@ -83,7 +83,7 @@ angular.module('app.services', [])
 		getPhotosFromMessage : getPhotosFromMessage,
 		getTitleFromMessage : getTitleFromMessage,
 		getLocationFromMessage : getLocationFromMessage,
-		getMessagesByLocation : getMessagesByLocation,
+		getNearestMessagesByLocation : getNearestMessagesByLocation,
 		getMessagesByTime : getMessagesByTime,
 		getMessagesByPeriod : getMessagesByPeriod,
 		deleteMessage : deleteMessage,

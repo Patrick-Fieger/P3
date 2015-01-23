@@ -30,6 +30,11 @@ app.config([
             url: "/message",
             controller: "Message",
             templateUrl: "js/templates/message.html"
+        })
+        .state("/post/:id", {
+            url: "/post/:id",
+            controller: "Post",
+            templateUrl: "js/templates/post.html"
         });
     }
 ]);
@@ -38,6 +43,7 @@ var ctrl = angular.module('app.ctrl', ['ngAnimate'])
 .controller('Register', Register)
 .controller('Navigate', Navigate)
 .controller('Message', Message)
+.controller('Post', Post)
 
 
 app.run(['$rootScope','$timeout',function($rootScope,$timeout) {
@@ -80,3 +86,18 @@ app.directive('onFinishRender',['$timeout', function ($timeout) {
         }
     };
 }]);
+
+app.filter('distance', function () {
+    return function (input) {
+        var zahl = parseFloat(input)
+        if(zahl >= 1){
+            zahl = zahl.toFixed(1);
+            return zahl + ' km'
+        }else{
+            zahl = zahl.toFixed(3);
+            zahl = zahl.split('.')[1]
+            return zahl + ' m'
+        }
+    }
+});
+

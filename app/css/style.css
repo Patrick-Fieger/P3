@@ -93,22 +93,6 @@ form textarea:focus{
   border-bottom: solid 2px #969696;
 }
 
-
-.container{
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  -webkit-box-shadow: 0px 0px 10px 0px rgba(100,100,100,1);
-  -moz-box-shadow: 0px 0px 10px 0px rgba(100,100,100,1);
-  box-shadow: 0px 0px 10px 0px rgba(100,100,100,1);
-}
-
-.container.active{
-  opacity: 0.5;
-  transform: scale(0.95);
-}
-
 [ui-view].ng-enter, [ui-view].ng-leave {
     position: absolute;
     left: 0;
@@ -156,8 +140,6 @@ form textarea:focus{
   z-index: 1;
 }
 
-
-
 .navigate_wrapper{
   background-color: rgba(242,239,225,0.9);
   position: absolute;
@@ -200,22 +182,6 @@ margin-top: -180px;
   background-size: 100%;
 }
 
-.compass_item{
-  /*background: rgba(0,0,0,0.5);*/
-}
-
-/*.compass_item:before{
-  content:"";
-  position: absolute;
-  top: -30px;
-  width: 20px;
-  height: 20px;
-  background: red;
-  left: 50%;
-  margin-left: -10px;
-  border-radius: 50%;
-}*/
-
 .compass_item p{
   text-align: center;
   position: relative;
@@ -233,7 +199,6 @@ margin-top: -180px;
   height: 100%;
   background-size: 100%;
   background-repeat: no-repeat;
-  /*margin-left: -19.5px;*/
 }
 
 /*NAVIGATE FOOTER*/
@@ -255,7 +220,6 @@ margin-top: -180px;
 }
 
 .footer{
-  /*background: white;*/
   position: absolute;
   bottom: 0px;
   left: 0px;
@@ -295,6 +259,14 @@ margin-top: -180px;
 }
 
 
+/*SHOW MESSAGE*/
+
+.post .image{
+  height: 150px;
+  width: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+}
 
 /*ICON FONTS*/
 

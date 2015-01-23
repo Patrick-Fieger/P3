@@ -8,8 +8,6 @@ var express = require('express'),
     qt   = require('quickthumb'),
     db = mongoose.connection;
 
-
-
 mongoose.connect("mongodb://patrickf_mongoadmin:ofvafwuvat@localhost:20799/p3",{auth:{authdb:"admin"}});    
 
 
@@ -35,11 +33,12 @@ app.listen(app.get('port'), function () {
 app.use(bodyParser.json());
 app.use(qt.static(__dirname + '/'));
 
-
-
 app.post('/create', register.createUser);
 app.post('/message', message.saveMessage);
 app.post('/photo', message.uploadPhoto);
 
+app.post('/messagebyid', message.getMessageById);
+
+app.post('/messageslocation', message.getMessageByNearest);
 
 app.post('/login', login.login);
