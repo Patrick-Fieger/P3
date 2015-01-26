@@ -4,9 +4,6 @@ Date.prototype.toDateInputValue = (function() {
     return local.toJSON().slice(0,10);
 });
 
-// alert(new Date().toDateInputValue())
-
-
 var Message = ['$scope', '$http', 'MessageService', '$location','fileUpload','geolocation',
     function($scope, $http, MessageService, $location,fileUpload,geolocation) {
         $scope.Message = {

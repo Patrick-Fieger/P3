@@ -35,6 +35,11 @@ app.config([
             url: "/post/:id",
             controller: "Post",
             templateUrl: "js/templates/post.html"
+        })
+        .state("/timeline/:position", {
+            url: "/timeline/:position",
+            controller: "Timeline",
+            templateUrl: "js/templates/timeline.html"
         });
     }
 ]);
@@ -44,6 +49,7 @@ var ctrl = angular.module('app.ctrl', ['ngAnimate'])
 .controller('Navigate', Navigate)
 .controller('Message', Message)
 .controller('Post', Post)
+.controller('Timeline', Timeline)
 
 
 app.run(['$rootScope','$timeout',function($rootScope,$timeout) {
