@@ -2,7 +2,16 @@ body,html{
   margin: 0;
   padding: 0;
 /*  font-family: 'Oswald', sans-serif;*/
-  font-family: 'Slabo 27px', serif;
+  font-family: 'Muli', serif;
+}
+
+
+.pushy a,
+.profiles p{
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
 }
 
 .animated{
@@ -25,8 +34,16 @@ article p{
   line-height: 1.5;
 }
 
-article h1{
+h1,
+h2,
+h3,
+h4,
+h5{
   font-family: 'Oswald', sans-serif;
+}
+
+
+article h1{
   letter-spacing: -0.02em;
   font-weight: 700;
   font-style: normal;
@@ -157,6 +174,36 @@ svg path{
   background: #ccc;
 }
 
+/*PROFILES*/
+
+.profiles img{
+  display: block;
+  margin: 0 auto;
+  clear: both;
+}
+
+.profiles img:hover{
+  cursor: pointer;
+}
+
+.profiles h3{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.profiles p{
+  font-size: 16px;
+  line-height: 26px;
+  margin-top: 20px;  
+  text-align: center;
+}
+
+/*
+.profiles p.active{
+  visibility: visible !important;
+  opacity: 1 !important;
+}*/
+
 /*MENU STYLE*/
 
 .pushy{
@@ -179,10 +226,6 @@ svg path{
     color: #666;
     padding: 5px 10px;
     text-decoration: none;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
 }
 
 .pushy li ul a span{

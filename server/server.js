@@ -30,13 +30,18 @@ app.listen(app.get('port'), function () {
     console.info('Express server listening on port ' + app.get('port'));
 });
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(qt.static(__dirname + '/'));
 
 app.post('/create', register.createUser);
 app.post('/message', message.saveMessage);
 app.post('/photo', message.uploadPhoto);
 
+app.get('/allmessagesbylocation', message.getMessageByLocation);
 app.post('/messagebyid', message.getMessageById);
 
 app.post('/messageslocation', message.getMessageByNearest);

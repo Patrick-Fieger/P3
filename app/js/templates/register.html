@@ -1,16 +1,15 @@
 <form ng-submit="register()" class="loginform">
+    <h1>Registrierung</h1>
     <div class="list">
-        <label class="item item-input item-floating-label">
-            <span class="input-label">Email</span>
+        <label class="item">
             <input required ng-model="data.email" autofocus type="email" placeholder="Email">
         </label>
-        <label class="item item-input item-floating-label">
-            <span class="input-label">Passwort</span>
+        <label class="item">
             <input required ng-model="data.password" type="password" placeholder="Passwort">
         </label>
         <button type="submit" class="button loginbutton button-outline button-positive">
             Registrieren
         </button>
     </div>
-    <a href="/login">oder logge dich ein</a>
+    <a href="/login" class="movereg">oder logge dich ein</a>
 </form>

@@ -95,14 +95,20 @@ app.directive('onFinishRender',['$timeout', function ($timeout) {
 
 app.filter('distance', function () {
     return function (input) {
-        var zahl = parseFloat(input)
+        var zahl = parseFloat(input);
         if(zahl >= 1){
             zahl = zahl.toFixed(1);
             return zahl + ' km'
         }else{
             zahl = zahl.toFixed(3);
-            zahl = zahl.split('.')[1]
-            return zahl + ' m'
+            zahl = zahl.split('.')[1];
+            if(zahl.charAt(0) == "0" && zahl.charAt(1) == "0"){
+                return zahl.charAt(2) + ' m'
+            }else if(zahl.charAt(0) == "0"){
+                return zahl.charAt(1) + zahl.charAt(2) + ' m'
+            }else{
+                return zahl + ' m'
+            }
         }
     }
 });

@@ -5,48 +5,27 @@
 <div class="time_wrapper">
 	<div class="time_inner">
 		<ul>
-			<li>
+
+		<li ng-repeat="message in messages">
+			<a href="post/{{message.id}}" style="background:url(/uploads/{{message.photo}})">
+				
+				<p>{{message.title}}</p>
+
+			</a>
+		</li>
+
+<!-- 			<li>
 				<a href="#" style="background:url(/uploads/627965cb-98fe-4fe3-b6cc-5bbe4466198esee.jpg)">
 					<p>Titel Ereigniss</p>
 				</a>
-			</li>
-			<li>
-				<a href="#" style="background:url(/uploads/627965cb-98fe-4fe3-b6cc-5bbe4466198esee.jpg)">
-					<p>Titel Ereigniss</p>
-				</a>
-			</li>
-			<li>
-				<a href="#" style="background:url(/uploads/627965cb-98fe-4fe3-b6cc-5bbe4466198esee.jpg)">
-					<p>Titel Ereigniss</p>
-				</a>
-			</li>
-			<li>
-				<a href="#" style="background:url(/uploads/627965cb-98fe-4fe3-b6cc-5bbe4466198esee.jpg)">
-					<p>Titel Ereigniss</p>
-				</a>
-			</li>
-			<li>
-				<a href="#" style="background:url(/uploads/627965cb-98fe-4fe3-b6cc-5bbe4466198esee.jpg)">
-					<p>Titel Ereigniss</p>
-				</a>
-			</li>
-			<li>
-				<a href="#" style="background:url(/uploads/627965cb-98fe-4fe3-b6cc-5bbe4466198esee.jpg)">
-					<p>Titel Ereigniss</p>
-				</a>
-			</li>
-			<li>
-				<a href="#" style="background:url(/uploads/627965cb-98fe-4fe3-b6cc-5bbe4466198esee.jpg)">
-					<p>Titel Ereigniss</p>
-				</a>
-			</li>
+			</li> -->
+
 		</ul>
 	</div>
 </div>
 
 
 <div class="timeline_bg"></div>
-
 <div class="timeline_wrapper">
 	<div class="timeline_inner">
 		<div class="big" year="2000"></div>

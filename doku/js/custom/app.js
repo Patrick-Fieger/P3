@@ -18,11 +18,11 @@ $.fn.waypoint.defaults = {
 $(document).ready(function() {
 
 // Nach Reload an Seitenanfang springen
-window.onload = function() {
- setTimeout (function () {
-  scrollTo(0,0);
- }, 0);
-}
+// window.onload = function() {
+//  setTimeout (function () {
+//   scrollTo(0,0);
+//  }, 0);
+// }
 
 
 // Läd die verzeichnisse als html dateien
@@ -53,7 +53,7 @@ function loadHtml(loaded){
 
 // Fügt Klassen und attribute für die Animationen hinzu
 function addAttributesToElements(){
-	$('p,blockquote,figure,h1,.trenner,iframe').each(function(index, el) {
+	$('p:not(.noanim),blockquote,figure,h1,.trenner,iframe').each(function(index, el) {
 		$(this).addClass('animated').attr({
 			"data-animation-delay" : 150,
 			"data-animation" : 'fadeIn'
@@ -139,6 +139,8 @@ function initWaypointForMenu(){
 		}, {
     	    // offset : $.waypoints('viewportHeight') / 2
 		});
+
+
 
 	});
 }

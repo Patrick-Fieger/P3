@@ -59,6 +59,7 @@ exports.getMessageByNearest = function(req, res, next) {
     ids = [];
     messages = [];
     distances = [];
+    original = [];
     smallestIDs = [];
     User.find({}, 'messages', function(err, docs) {
         for (var i = 0; i < docs.length; i++) {
@@ -73,11 +74,13 @@ exports.getMessageByNearest = function(req, res, next) {
         }
         for (var i = 0; i < positions.length; i++) {
             distances.push(parseFloat(distanceTo(latlong.pos, positions[i])));
+            original.push(parseFloat(distanceTo(latlong.pos, positions[i])));
         };
-        var unsorted = distances;
-        distances.sort();
+        
+        original.sort();
+
         for (var i = 0; i < 3; i++) {
-            smallestIDs.push(ids[unsorted.indexOf(distances[i])])
+            smallestIDs.push(ids[distances.indexOf(original[i])])
         };
         res.status(200).send(smallestIDs).end();
     });
@@ -126,6 +129,31 @@ if (typeof(Number.prototype.toRad) === "undefined") {
         return this * Math.PI / 180;
     }
 }
+
+exports.getMessageByLocation = function(req, res){
+    var d = req.query.position;
+
+    for (var i = 0; i < d.length; i++) {
+        d[i] = parseFloat(d[i]);
+    };
+
+    User.find({}, {
+    _id: 0,
+    messages: {
+        $elemMatch: {
+            position: d
+        }
+    }
+    }, function(err, messages) {
+        if (err) {
+            console.log(err);
+        }
+        if (messages) {
+            res.status(200).send(messages[0].messages).end();
+        }
+    });
+}
+
 
 exports.saveMessage = function(req, res) {
     var d = req.body;

@@ -13,8 +13,8 @@ $.fn.scrollEnd = function(callback, timeout) {
 
 var Timeline = ['$scope', '$http', 'MessageService', '$location', 'geolocation', '$stateParams',
     function($scope, $http, MessageService, $location, geolocation, $stateParams) {
-        
-
+    
+        $scope.messages = [];
 
         var route = $stateParams.position.split('-');
         var width = $(window).width();
@@ -24,43 +24,41 @@ var Timeline = ['$scope', '$http', 'MessageService', '$location', 'geolocation',
         var timelinefull = $('.timeline_inner').width();
         var maxscrolltimeline = timelinefull - width;
 
-        $('.time_wrapper').scroll(function(event) {
-            console.log(event.target.scrollLeft)
-            if(timescroll == false){
-                timescrollbig = true;
-                var scrollpos = $(this).scrollLeft();
-                var percent = (scrollpos / maxscrolltimeinnerfull);
-                $('.timeline_wrapper').scrollLeft(maxscrolltimeline * percent);
-            } 
+        var scrolloptions = {
+            probeType: 3,
+            eventPassthrough: true,
+            scrollX: true,
+            scrollY: false
+        }
+
+        var timeWrapper = new IScroll('.time_wrapper', scrolloptions);
+        var timeLineWrapper = new IScroll('.timeline_wrapper', scrolloptions);
+
+        timeWrapper.on('scroll', function(event) {
+            var scrollPos = parseInt(this.x) * (-1);
+            var percent = (scrollPos / maxscrolltimeinnerfull);
+            timeLineWrapper.scrollTo(-(maxscrolltimeline * percent),0)
         });
 
-        $('.time_wrapper').scrollEnd(function(){
-            timescrollbig = false;
-        }, 100);
-
-        $('.timeline_wrapper').scroll(function(event) {
-            if(timescrollbig == false){
-                timescroll = true;
-                var scrollpos = $(this).scrollLeft();
-                var percent = (scrollpos / maxscrolltimeline);
-                $('.time_wrapper').scrollLeft(maxscrolltimeinnerfull * percent);
-            }
+        timeLineWrapper.on('scroll', function(event) {
+            var scrollPos = parseInt(this.x) * (-1);
+            var percent = (scrollPos / maxscrolltimeline);
+            timeWrapper.scrollTo(-(maxscrolltimeinnerfull * percent),0);
         });
 
-        $('.timeline_wrapper').scrollEnd(function(){
-            timescroll = false;
-        }, 100);
+        MessageService.getMessagesByLocation(route).success(updateTimeline);
 
+        function updateTimeline(data, status, headers, config) {
+            //$scope.messages = data;
+            var test = []
 
-        // MessageService.getMessageById(route).success(showData);
+            for (var i = 0; i < 10; i++) {
+                test.push(data)
+            };
 
-        // function showData(data, status, headers, config) {
-        //     var message = data;
-        //     message.photo = '/uploads/' + message.photo;
-        //     message.date = formatDate(message.date[0]);
-        //     $scope.message = message;
-        // }
-
-
+            setTimeout(function(){
+                $scope.messages = test;
+            },4000)
+        }
     }
 ];

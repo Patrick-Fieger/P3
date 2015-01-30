@@ -9,10 +9,9 @@
 </div>
 <div class="card_bg"></div>
 
-<a ng-show="lesen" href="" class="messagecanread">Ereignis lesen</a>
-
 <div class="footer">
 	<a href="/settings" class="icon-settings21 settingsicon"></a>
-	<a href="/message" class="postmessage"></a>
-	<a href="" class="icon-location showcard"></a>
+    <div ng-show="lesen" ng-class="{fadeIn : lesen,animated : lesen}" class="pulse"></div>
+    <a ng-show="lesen" ng-class="{bounceIn : lesen,animated : lesen}" href="/post/{{href_}}" class="messagecanread"></a>
+    <a href="/message" class="postmessage"></a>
 </div>
