@@ -154,6 +154,31 @@ exports.getMessageByLocation = function(req, res){
     });
 }
 
+exports.isTimelineAvailable = function(req, res){
+    var d = req.query.position;
+
+    for (var i = 0; i < d.length; i++) {
+        d[i] = parseFloat(d[i]);
+    };
+
+    User.find({}, {
+    _id: 0,
+    messages: {
+        $elemMatch: {
+            position: d
+        }
+    }
+    }, function(err, messages) {
+        if (err) {
+            console.log(err);
+        }
+        if (messages) {
+            res.status(200).send(messages[0].messages).end();
+        }
+    });
+}
+
+
 
 exports.saveMessage = function(req, res) {
     var d = req.body;

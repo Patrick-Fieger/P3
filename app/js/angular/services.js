@@ -40,6 +40,13 @@ angular.module('app.services', [])
         	}
 		});
 	};
+	var isTimelineAvailable = function(position){
+		return $http.get(url + 'timelineavailable',{
+			params: {
+        	    position: position
+        	}
+		});
+	};
 	var deleteMessage = function(id){
 
 	};
@@ -62,7 +69,8 @@ angular.module('app.services', [])
 		getMessagesByLocation : getMessagesByLocation,
 		deleteMessage : deleteMessage,
 		postMessage : postMessage,
-		sendPhoto : sendPhoto
+		sendPhoto : sendPhoto,
+		isTimelineAvailable : isTimelineAvailable
 	}
 }).directive('fileModel', ['$parse', function ($parse) {
     return {

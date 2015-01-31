@@ -8,7 +8,7 @@ var Navigate = ['$scope', '$http', 'MessageService', '$location', 'geolocation',
         var ready = false,
             compass,
             bearing = [],
-            circle = 50;
+            circle = 120;
 
         Compass.watch(function(heading) {
             compass = heading;

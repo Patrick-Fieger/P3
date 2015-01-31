@@ -1,12 +1,12 @@
 <div class="post">
 	<div class="image" style="background-image:url({{message.photo}})"></div>
-	<p class="time">{{message.date}}</p>
+	<p class="time">{{message.date | formatdate}}</p>
 	<h1>{{message.title}}</h1>
 	<article>
 		<p>{{message.message}}</p>
 	</article>
 </div>
 
-<!-- <a href="/timeline/{{message.position[0]}}-{{message.position[1]}}">Timeline</a> -->
-
-<!-- <a href="/navigate">Timeline</a> -->
+<a class="postback" ng-href="{{href}}">
+	<div></div>
+</a>

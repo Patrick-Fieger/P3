@@ -416,6 +416,27 @@ margin-top: -180px;
 
 /*SHOW MESSAGE*/
 
+.postback{
+  width: 75px;
+  height: 75px;
+  display: block;
+  margin: 0 auto;
+  border: 2px solid black;
+  border-radius: 50%;
+  position: relative;
+}
+
+.postback div{
+  border-top: 3px solid black;
+  border-left: 3px solid black;
+  height: 30px;
+  width: 30px;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 19px;
+  left: 25px;
+}
+
 .post .image{
   height: 33vh;
   width: 100%;
@@ -456,6 +477,17 @@ margin-top: -180px;
 
 /*TIMELINE*/
 
+.compassback{
+  position: fixed;
+  bottom: 120px;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  background: url(../img/kompass.png);
+  background-size: cover;
+  margin-left: -30px;
+}
+
 ::-webkit-scrollbar { width: 0 !important; display: none !important; opacity: 0 !important; }
 :-webkit-scrollbar { width: 0 !important; display: none !important; opacity: 0 !important; }
 
@@ -474,7 +506,7 @@ margin-top: -180px;
 }
 
 .time_inner{
-  width: 2380px;
+  width: 100%;
 }
 
 .time_inner ul{
@@ -487,11 +519,23 @@ margin-top: -180px;
 }
 
 .time_inner ul li a{
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   float: left;
-  padding: 20px;
+  /*padding: 20px;*/
   background-size: cover !important;
+}
+
+.time_inner ul li a p{
+  text-align: center;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  padding: 10px 20px
+}
+
+.time_inner .timeholder{
+  font-size: 20px;
+  text-align: center;
 }
 
 .timeline_bg{
@@ -504,7 +548,7 @@ margin-top: -180px;
 }
 
 .timeline_wrapper{
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   height: 81px;
@@ -514,12 +558,16 @@ margin-top: -180px;
 }
 
 .timeline_inner{
-  width: 647px;
+  width: 100%;
   height: 40px;
   margin-top: 41px;
 }
 
 .timeline_inner div{
+  float: left;
+}
+
+.timeline_inner span{
   float: left;
   width: 1px;
   height: 40px;
@@ -528,13 +576,13 @@ margin-top: -180px;
   position: relative;
 }
 
-.timeline_inner div.big{
+.timeline_inner span.big{
   width: 2px;
   height: 60px;
   margin-top: -20px;
 }
 
-.timeline_inner div.big:before{
+.timeline_inner span.big:before{
   content: attr(year);
   position: absolute;
   top: -20px;
@@ -542,13 +590,13 @@ margin-top: -180px;
   font-size: 14px;
 }
 
-.timeline_inner div.big:first-child:before{
+/*.timeline_inner span.big:first-child:before{
   left: 5px;
 }
-
-.timeline_inner div.big:last-child:before{
+*/
+/*.timeline_inner span.big:last-child:before{
   left: -30px; 
-}
+}*/
 
 
 

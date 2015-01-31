@@ -1,104 +1,31 @@
-<div class="timeholder">
-	<p>5. Mai 1993</p>
-</div>
-
 <div class="time_wrapper">
-	<div class="time_inner">
-		<ul>
-
-		<li ng-repeat="message in messages">
-			<a href="post/{{message.id}}" style="background:url(/uploads/{{message.photo}})">
-				
-				<p>{{message.title}}</p>
-
-			</a>
-		</li>
-
-<!-- 			<li>
-				<a href="#" style="background:url(/uploads/627965cb-98fe-4fe3-b6cc-5bbe4466198esee.jpg)">
-					<p>Titel Ereigniss</p>
-				</a>
-			</li> -->
-
-		</ul>
-	</div>
+    <div class="time_inner">
+        <ul>
+            <li ng-repeat="message in messages">
+                <p class="timeholder">{{message.date | formatdate}}</p>
+                <a href="post/{{message.id}}" style="background:url(/uploads/{{message.photo}})">
+                <p>{{message.title}}</p>
+                </a>
+            </li>
+        </ul>
+    </div>
 </div>
-
-
 <div class="timeline_bg"></div>
 <div class="timeline_wrapper">
-	<div class="timeline_inner">
-		<div class="big" year="2000"></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div class="big" year="2000"></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div class="big" year="2000"></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div class="big" year="2000"></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div class="big" year="2000"></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div class="big" year="2000"></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div class="big" year="2000"></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div class="big" year="2000"></div>
-
-	</div>
+    <div class="timeline_inner">
+    	<div ng-repeat="message in messages">
+        	<span></span>
+        	<span></span>
+        	<span></span>
+        	<span></span>
+        	<span></span>
+        	<span></span>
+        	<span></span>
+        	<span></span>
+        	<span></span>
+        	<span class="big" year="{{message.date | onlyyear}}"></span>
+    	</div>
+    </div>
 </div>
+
+<a href="/navigate" class="compassback"></a>

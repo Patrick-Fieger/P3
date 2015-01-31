@@ -14,51 +14,62 @@ $.fn.scrollEnd = function(callback, timeout) {
 var Timeline = ['$scope', '$http', 'MessageService', '$location', 'geolocation', '$stateParams',
     function($scope, $http, MessageService, $location, geolocation, $stateParams) {
     
+        // if (confirm('Are you sure you want to save this thing into the database?')) {
+        //     // Save it!
+        // } else {
+        //     // Do nothing!
+        // }
+        
         $scope.messages = [];
-
         var route = $stateParams.position.split('-');
         var width = $(window).width();
-        var timeinnerfull = $('.time_inner').width();
-        var maxscrolltimeinnerfull = timeinnerfull - width;
-
-        var timelinefull = $('.timeline_inner').width();
-        var maxscrolltimeline = timelinefull - width;
-
         var scrolloptions = {
             probeType: 3,
             eventPassthrough: true,
             scrollX: true,
             scrollY: false
         }
-
-        var timeWrapper = new IScroll('.time_wrapper', scrolloptions);
-        var timeLineWrapper = new IScroll('.timeline_wrapper', scrolloptions);
-
-        timeWrapper.on('scroll', function(event) {
-            var scrollPos = parseInt(this.x) * (-1);
-            var percent = (scrollPos / maxscrolltimeinnerfull);
-            timeLineWrapper.scrollTo(-(maxscrolltimeline * percent),0)
-        });
-
-        timeLineWrapper.on('scroll', function(event) {
-            var scrollPos = parseInt(this.x) * (-1);
-            var percent = (scrollPos / maxscrolltimeline);
-            timeWrapper.scrollTo(-(maxscrolltimeinnerfull * percent),0);
-        });
+        var timeinnerfull,maxscrolltimeinnerfull,timelinefull,maxscrolltimeline;
 
         MessageService.getMessagesByLocation(route).success(updateTimeline);
 
-        function updateTimeline(data, status, headers, config) {
-            //$scope.messages = data;
-            var test = []
 
-            for (var i = 0; i < 10; i++) {
-                test.push(data)
+        function calculateWidths(){
+            timeinnerfull = $('.time_inner li').size() * 290;
+            maxscrolltimeinnerfull = timeinnerfull - width;
+
+            timelinefull = $('.timeline_inner div').size() * 91;
+            maxscrolltimeline = timelinefull - width;
+
+            initiScroll();
+        }
+
+
+        function initiScroll(){
+            var timeWrapper = new IScroll('.time_wrapper', scrolloptions);
+            var timeLineWrapper = new IScroll('.timeline_wrapper', scrolloptions);
+    
+            timeWrapper.on('scroll', function(event) {
+                var scrollPos = parseInt(this.x) * (-1);
+                var percent = (scrollPos / maxscrolltimeinnerfull);
+                timeLineWrapper.scrollTo(-(maxscrolltimeline * percent),0)
+            });
+    
+            timeLineWrapper.on('scroll', function(event) {
+                var scrollPos = parseInt(this.x) * (-1);
+                var percent = (scrollPos / maxscrolltimeline);
+                timeWrapper.scrollTo(-(maxscrolltimeinnerfull * percent),0);
+            });
+        }
+        
+        function updateTimeline(data, status, headers, config) {
+            $scope.messages = data;
+
+            for (var i = 0; i < $scope.messages.length; i++) {
+                $scope.messages[i].date = $scope.messages[i].date[0]
             };
 
-            setTimeout(function(){
-                $scope.messages = test;
-            },4000)
+            calculateWidths();
         }
     }
 ];
