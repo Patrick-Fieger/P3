@@ -1,5 +1,5 @@
-var Navigate = ['$scope', '$http', 'MessageService', '$location', 'geolocation',
-    function($scope, $http, MessageService, $location, geolocation) {
+var Navigate = ['$scope', '$http', 'MessageService', '$state', 'geolocation','$rootScope',
+    function($scope, $http, MessageService, $state, geolocation, $rootScope) {
         $scope.currentLocation;
         $scope.lesen = false;
         $scope.messages = [];
@@ -8,7 +8,7 @@ var Navigate = ['$scope', '$http', 'MessageService', '$location', 'geolocation',
         var ready = false,
             compass,
             bearing = [],
-            circle = 120;
+            circle = 45;
 
         Compass.watch(function(heading) {
             compass = heading;
@@ -50,6 +50,8 @@ var Navigate = ['$scope', '$http', 'MessageService', '$location', 'geolocation',
                     count++;
                     $scope.lesen = true;
                     $scope.href_ = $scope.messages[i].id;
+                    $rootScope.samePlace = $scope.messages[i].position;
+                    $rootScope.samePlaceTitle = $scope.messages[i].title;
                 }
 
                 if(i == $scope.messages.length-1){

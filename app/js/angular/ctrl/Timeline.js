@@ -12,14 +12,7 @@ $.fn.scrollEnd = function(callback, timeout) {
 };
 
 var Timeline = ['$scope', '$http', 'MessageService', '$location', 'geolocation', '$stateParams',
-    function($scope, $http, MessageService, $location, geolocation, $stateParams) {
-    
-        // if (confirm('Are you sure you want to save this thing into the database?')) {
-        //     // Save it!
-        // } else {
-        //     // Do nothing!
-        // }
-        
+    function($scope, $http, MessageService, $location, geolocation, $stateParams) {    
         $scope.messages = [];
         var route = $stateParams.position.split('-');
         var width = $(window).width();
@@ -38,7 +31,8 @@ var Timeline = ['$scope', '$http', 'MessageService', '$location', 'geolocation',
             timeinnerfull = $('.time_inner li').size() * 290;
             maxscrolltimeinnerfull = timeinnerfull - width;
 
-            timelinefull = $('.timeline_inner div').size() * 91;
+            timelinefull = $('.timeline_inner div').size() * 171;
+            $('.timeline_inner').width(timelinefull);
             maxscrolltimeline = timelinefull - width;
 
             initiScroll();
@@ -63,13 +57,18 @@ var Timeline = ['$scope', '$http', 'MessageService', '$location', 'geolocation',
         }
         
         function updateTimeline(data, status, headers, config) {
+            console.log(data)
             $scope.messages = data;
 
             for (var i = 0; i < $scope.messages.length; i++) {
                 $scope.messages[i].date = $scope.messages[i].date[0]
             };
 
-            calculateWidths();
+            setTimeout(function(){
+                calculateWidths();
+            },100)
+
+            
         }
     }
 ];

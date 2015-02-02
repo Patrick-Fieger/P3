@@ -506,7 +506,7 @@ margin-top: -180px;
 }
 
 .time_inner{
-  width: 100%;
+  width: 1160px;
 }
 
 .time_inner ul{
@@ -572,7 +572,7 @@ margin-top: -180px;
   width: 1px;
   height: 40px;
   background: #000;
-  margin: 0 4px;
+  margin: 0 8px;
   position: relative;
 }
 
@@ -590,15 +590,9 @@ margin-top: -180px;
   font-size: 14px;
 }
 
-/*.timeline_inner span.big:first-child:before{
-  left: 5px;
-}
-*/
-/*.timeline_inner span.big:last-child:before{
+.timeline_inner div:last-child .big:before{
   left: -30px; 
-}*/
-
-
+}
 
 /*ICON FONTS*/
 

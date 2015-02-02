@@ -132,48 +132,54 @@ if (typeof(Number.prototype.toRad) === "undefined") {
 
 exports.getMessageByLocation = function(req, res){
     var d = req.query.position;
+    var messagesArray = [];
 
     for (var i = 0; i < d.length; i++) {
         d[i] = parseFloat(d[i]);
     };
 
-    User.find({}, {
-    _id: 0,
-    messages: {
-        $elemMatch: {
-            position: d
-        }
-    }
-    }, function(err, messages) {
+    User.find({}, function(err, alldata) {
+        
+        for (var i = 0; i < alldata.length; i++) {
+            for (var n = 0; n < alldata[i].messages.length; n++) {
+                if(alldata[i].messages[n].position[0] == d[0] && alldata[i].messages[n].position[1] == d[1]){
+                    messagesArray.push(alldata[i].messages[n])
+                }    
+            };
+        };
+        
         if (err) {
             console.log(err);
         }
-        if (messages) {
-            res.status(200).send(messages[0].messages).end();
+        if (alldata) {
+            res.status(200).send(messagesArray).end();
         }
     });
 }
 
 exports.isTimelineAvailable = function(req, res){
     var d = req.query.position;
+    var messagesArray = [];
 
     for (var i = 0; i < d.length; i++) {
         d[i] = parseFloat(d[i]);
     };
 
-    User.find({}, {
-    _id: 0,
-    messages: {
-        $elemMatch: {
-            position: d
-        }
-    }
-    }, function(err, messages) {
+    User.find({}, function(err, alldata) {
+        
+        for (var i = 0; i < alldata.length; i++) {
+            for (var n = 0; n < alldata[i].messages.length; n++) {
+                if(alldata[i].messages[n].position[0] == d[0] && alldata[i].messages[n].position[1] == d[1]){
+                    messagesArray.push(alldata[i].messages[n])
+                }    
+            };
+        };
+        
         if (err) {
             console.log(err);
         }
-        if (messages) {
-            res.status(200).send(messages[0].messages).end();
+        if (alldata) {
+            res.status(200).send({length:messagesArray.length}).end();
         }
     });
 }
