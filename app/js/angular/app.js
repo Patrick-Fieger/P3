@@ -63,6 +63,14 @@ app.run(['$rootScope','$timeout',function($rootScope,$timeout) {
         },5000);
     });
 
+    $rootScope.showNotification = function(text){
+        $rootScope.notibool = true;
+        $rootScope.alerttext = text;
+        $timeout(function(){
+            $rootScope.notibool = false;
+        },6000)
+    }
+
     $rootScope.$on('$stateChangeStart', function(ev, to, toParams, from, fromParams) {
         NProgress.start();
     });

@@ -41,8 +41,6 @@ input:focus:-ms-input-placeholder {
    color: #969696;  
 }
 
-input:focus
-
 .date{
   font-family: "futura-pt";
 }
@@ -62,13 +60,30 @@ input:focus
 .container{
   height: 100%;
 }
-/*
-.messageform{
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-}*/
+
+.notification{
+  position: fixed;
+  top: -300px;
+  left: 0px;
+  width: 100%;
+  background: #be6d5f;
+  z-index: 100000;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s 
+}
+
+.notification p{
+  padding: 10px 15px;
+  color: #fff;
+  margin-bottom: 0;
+  font-size: 20px;
+}
+
+.notification.active{
+  top: 0;
+}
 
 #nprogress .bar {
   background: #29d;
