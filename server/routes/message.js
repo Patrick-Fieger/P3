@@ -1,17 +1,28 @@
+/**
+ * Route zum verarbeiten von Messages
+ */
+
 var mongoose = require("mongoose");
 var uuid = require('node-uuid'),
     formidable = require('formidable'),
     util = require('util')
     fs = require('fs-extra');
 var User = mongoose.model('user');
-// User.update({email:"a@a.de"}, { $set: { messages: [] }}, function(err, affected){
-//     console.log('affected: ', affected);
-// });
 var positions = new Array();
 var ids = new Array();
 var messages = new Array();
 var distances = new Array();
 var smallestIDs = new Array();
+
+
+/**
+ * Funktion zum Hochladen eines Bildes
+ * Das Bild wird in unseren HTML-Ordner gespeichert
+ * 
+ * @param  {Multipart-Form-Data} req
+ * @param  {JSON} res
+ * @return {String}     Pfad zum Bild wird an den Client zurückgegeben
+ */
 exports.uploadPhoto = function(req, res) {
     var form = new formidable.IncomingForm();
     form.encoding = 'binary';
@@ -35,7 +46,15 @@ exports.uploadPhoto = function(req, res) {
         }
     });
 }
-exports.getMessageById = function(req, res, next) {
+
+/**
+ * Funktion findet eine Message die eine bestimmte ID hat
+ * Diese ID wird vom Client übermittelt und dieser bekommt die gefundene Message als JSON zurück
+ * @param  {JSON}   req
+ * @param  {JSON}   res
+ * @return {JSON}      
+ */
+exports.getMessageById = function(req, res) {
     var id_ = req.body;
     User.find({}, {
         _id: 0,
@@ -53,7 +72,15 @@ exports.getMessageById = function(req, res, next) {
         }
     });
 }
-exports.getMessageByNearest = function(req, res, next) {
+
+/**
+ * Funktion um die drei Messages zu laden die meinem aktuellen Standpunkt am nähesten sind
+ * Die Funktion bekommt eine Geolocation übermittelt und returnt die gefundenen Messages
+ * @param  {JSON} req
+ * @param  {JSON} res
+ * @return {JSON}    
+ */
+exports.getMessageByNearest = function(req, res) {
     var latlong = req.body;
     positions = [];
     ids = [];
@@ -86,6 +113,10 @@ exports.getMessageByNearest = function(req, res, next) {
     });
 }
 
+
+/**
+ * Funktion zum Umwandeln einer Position
+ */
 function LatLon(lat, lon, rad) {
     if (typeof(rad) == 'undefined') rad = 6371;
     this._lat = typeof(lat) == 'number' ? lat : typeof(lat) == 'string' && lat.trim() != '' ? +lat : NaN;
@@ -93,6 +124,10 @@ function LatLon(lat, lon, rad) {
     this._radius = typeof(rad) == 'number' ? rad : typeof(rad) == 'string' && trim(lon) != '' ? +rad : NaN;
 }
 
+
+/**
+ * Funktion zum Berechnen einer Distanz zwischen zwei Geolocations
+ */
 function distanceTo(actuall, point) {
     var precision = 4;
     var R = actuall._radius;
@@ -108,6 +143,9 @@ function distanceTo(actuall, point) {
     return toPrecisionFixed(d, precision);
 }
 
+/**
+ * Funktion zum Berechnen der Präzision
+ */
 function toPrecisionFixed(d, precision) {
     var n = d.toPrecision(precision);
     n = n.replace(/(.+)e\+(.+)/, function(n, sig, exp) {
@@ -124,12 +162,20 @@ function toPrecisionFixed(d, precision) {
     return n;
 }
 
+// Wenn .toRad undefined ist, dann berechne den Radius
 if (typeof(Number.prototype.toRad) === "undefined") {
     Number.prototype.toRad = function() {
         return this * Math.PI / 180;
     }
 }
 
+/**
+ * Funktion zum Erstellen des Zeitstrahls
+ * Returnt die gefundenen Messages die an der selben Geolocation abgesetzt wurden
+ * @param  {JSON} req 
+ * @param  {JSON} res 
+ * @return {JSON}
+ */
 exports.getMessageByLocation = function(req, res){
     var d = req.query.position;
     var messagesArray = [];
@@ -139,7 +185,7 @@ exports.getMessageByLocation = function(req, res){
     };
 
     User.find({}, function(err, alldata) {
-        
+
         for (var i = 0; i < alldata.length; i++) {
             for (var n = 0; n < alldata[i].messages.length; n++) {
                 if(alldata[i].messages[n].position[0] == d[0] && alldata[i].messages[n].position[1] == d[1]){
@@ -157,6 +203,15 @@ exports.getMessageByLocation = function(req, res){
     });
 }
 
+/**
+ * Checkt ob ein Zeitstrahl möglich wäre, oder ob es nur eine Message gibt
+ * Returnt die Länge an den Client
+ * array < 2 = Nur eine Message da, kein Zeitstrahl möglich
+ * array >=2 = Zeitstrahl möglich
+ * @param  {JSON}  req 
+ * @param  {JSON}  res 
+ * @return {JSON}     
+ */
 exports.isTimelineAvailable = function(req, res){
     var d = req.query.position;
     var messagesArray = [];
@@ -184,8 +239,12 @@ exports.isTimelineAvailable = function(req, res){
     });
 }
 
-
-
+/**
+ * Funktion zum abspeichern der übergebenen Daten einer Message in die Datenbank
+ * @param  {JSON} req
+ * @param  {JSON} res
+ * @return status
+ */
 exports.saveMessage = function(req, res) {
     var d = req.body;
     var email = d.email;
@@ -201,3 +260,10 @@ exports.saveMessage = function(req, res) {
         });
     });
 };
+
+
+// Funktion zum löschen der Messages in der Datenbank
+//User.update({email:"a@a.de"}, { $set: { messages: [] }}, function(err, affected){
+//     console.log('affected: ', affected);
+// });
+

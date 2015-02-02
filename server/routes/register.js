@@ -1,5 +1,8 @@
+/**
+ * Route zum anlegen eines neuen Nutzers in der Datenbank
+ * 
+ */
 var mongoose = require("mongoose");
-
 var User = mongoose.model('user',
     {
         email: String,
@@ -9,7 +12,13 @@ var User = mongoose.model('user',
     }
 );
 
-exports.createUser = function(req, res, next) {
+/**
+ * Funktion zum anlegen eines neuen Nutzers in der Datenbank
+ * @param  {JSON}   req
+ * @param  {JSON}   res
+ * @return status 
+ */
+exports.createUser = function(req, res) {
     var d = req.body;
 
     var user = new User(
