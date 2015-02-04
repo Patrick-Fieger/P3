@@ -86,9 +86,9 @@ input:focus:-ms-input-placeholder {
 }
 
 #nprogress .bar {
-  background: #be6d5f;
+  background: #29d;
   position: fixed;
-  z-index: 100000;
+  z-index: 1031;
   top: 0;
   left: 0;
   width: 100%;
@@ -150,15 +150,6 @@ form textarea{
 form input:focus,
 form textarea:focus{
   border-bottom: solid 2px #969696;
-}
-
-form input[type="file"]{
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  width: 10px;
-  height: 10px;
 }
 
 .loginform{
@@ -553,12 +544,9 @@ margin-top: -180px;
 
 .time_inner ul li a p{
   text-align: center;
-  background: rgba(0,0,0,0.1);
+  background: rgba(0,0,0,0.8);
   color: #fff;
-  padding: 10px 20px;
-  font-size: 19px;
-  font-weight: bolder;
-  /*text-shadow: 0px 0px 10px black;*/
+  padding: 10px 20px
 }
 
 .time_inner .timeholder{
@@ -567,7 +555,6 @@ margin-top: -180px;
   text-transform: uppercase;
   color: #7dc9c9;
   font-weight: bolder;
-  font-family: 'futura-pt';
 }
 
 .timeline_bg{
@@ -603,7 +590,7 @@ margin-top: -180px;
   float: left;
   width: 1px;
   height: 40px;
-  background: #be6d5f;
+  background: #000;
   margin: 0 8px;
   position: relative;
 }
@@ -616,7 +603,6 @@ margin-top: -180px;
 
 .timeline_inner span.big:before{
   content: attr(year);
-  font-family: 'futura-pt';
   position: absolute;
   top: -20px;
   left: -15px;

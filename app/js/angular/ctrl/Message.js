@@ -6,8 +6,8 @@ Date.prototype.toDateInputValue = (function() {
 
 var counter = 0
 
-var Message = ['$scope', '$http', 'MessageService', '$location','geolocation','$rootScope',
-    function($scope, $http, MessageService, $location,geolocation,$rootScope) {
+var Message = ['$scope', '$http', 'MessageService', '$location','fileUpload','geolocation','$rootScope',
+    function($scope, $http, MessageService, $location,fileUpload,geolocation,$rootScope) {
         $scope.Message = {
             email: localStorage.getItem('user'),
             position: [],

@@ -238,7 +238,7 @@
       spinner && removeElement(spinner);
     }
 
-    $('body').append(progress);
+    $('.nav_wrapper').append(progress);
     return progress;
   };
 

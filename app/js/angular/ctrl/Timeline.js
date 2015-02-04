@@ -66,13 +66,9 @@ var Timeline = ['$scope', '$http', 'MessageService', '$location', 'geolocation',
 
             setTimeout(function(){
                 calculateWidths();
-            },100)   
-        }
+            },100)
 
-        $scope.setPositions = function(){
-            $('.time_inner li').each(function(index, el) {
-                $(this).find('a').find('p').css('margin-top',  (250 - ($(this).find('a').find('p').height()))/2 + 'px');
-            });
+            
         }
     }
 ];

@@ -1,6 +1,5 @@
 var url = 'http://project-go.me/server/';
 angular.module('app.services', [])
-
 .service('UserService', function($http){
 	var login = function(data){
 		return $http.post(url + 'login', data)
@@ -73,8 +72,7 @@ angular.module('app.services', [])
 		sendPhoto : sendPhoto,
 		isTimelineAvailable : isTimelineAvailable
 	}
-})
-.directive('fileModel', ['$parse', function ($parse) {
+}).directive('fileModel', ['$parse', function ($parse) {
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
@@ -88,4 +86,20 @@ angular.module('app.services', [])
             });
         }
     };
+}]).service('fileUpload', ['$http', function ($http) {
+    this.uploadFileToUrl = function(file, uploadUrl){
+        var fd = new FormData();
+        fd.append('file', file);
+        $http.post(uploadUrl, fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        })
+        .success(function(){
+        })
+        .error(function(){
+        });
+    }
 }]);
+
+
+
