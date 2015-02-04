@@ -1,7 +1,7 @@
 <div class="time_wrapper">
     <div class="time_inner">
         <ul>
-            <li ng-repeat="message in messages">
+            <li ng-repeat="message in messages" on-finish-render="setPositions()">
                 <p class="timeholder">{{message.date | formatdate}}</p>
                 <a href="post/{{message.id}}" style="background:url(/uploads/{{message.photo}})">
                 <p>{{message.title}}</p>

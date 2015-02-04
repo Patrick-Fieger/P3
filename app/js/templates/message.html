@@ -1,9 +1,9 @@
 <div class="messageform">
     <form ng-controller="Message" ng-submit="sendMessage()">
         <input required ng-model="Message.title" type="text" placeholder="Title"><br><br>
-        <input required file-model="photo" type="file"/><br><br>
         <input required ng-model="Message.date[0]" type="date" placeholder="Datum"><br><br>
         <textarea style="height:200px" required ng-model="Message.message" placeholder="Geschichte"></textarea><br><br>
+        <input required file-model="photo" type="file"/>
         <button type="submit" class="button loginbutton button-outline button-positive">
         Speichern
         </button>
