@@ -1,9 +1,14 @@
 var app = angular.module('p3', ['ui.router','ngSanitize','ngAnimate','app.ctrl','app.services','geolocation']);
+
+/**
+ * App Konfiguration
+ * Hier werden alle möglichen States, Abhängigkeiten, Templates und Controller zugewiesen
+ */
 app.config([
     '$locationProvider','$stateProvider','$urlRouterProvider','$animateProvider',
     function($locationProvider,$stateProvider,$urlRouterProvider,$animateProvider) {
         $locationProvider.html5Mode(true);
-        $urlRouterProvider.otherwise("/login");
+        $urlRouterProvider.otherwise("/");
 
         $stateProvider
         .state("/", {
@@ -43,24 +48,31 @@ app.config([
         });
     }
 ]);
+
+/**
+ * Hier werden alle Controller geladen
+ */
 var ctrl = angular.module('app.ctrl', ['ngAnimate'])
 .controller('Login', Login)
 .controller('Register', Register)
 .controller('Navigate', Navigate)
 .controller('Message', Message)
 .controller('Post', Post)
-.controller('Timeline', Timeline)
+.controller('Timeline', Timeline);
 
-
+/**
+ * Initialisierung der App
+ * Es wird immer an den Seitenafang gescrollt und ein "fake" Progress angezeigt
+ * Des weiteren wird eine globale Funktion kreiert um eine Notification anzuzeigen
+ */
 app.run(['$rootScope','$timeout',function($rootScope,$timeout) {
     $rootScope.$on('$viewContentLoaded', function() {
         if($(window).scrollTop() > 0){
             $('html,body').animate({scrollTop: 0}, 750, 'easeInOutExpo');
         }
-
         $timeout(function(){
             NProgress.done();
-        },5000);
+        },300);
     });
 
     $rootScope.showNotification = function(text){
@@ -76,7 +88,9 @@ app.run(['$rootScope','$timeout',function($rootScope,$timeout) {
     });
 }]);
 
-
+/**
+ * Verhindert den Seitenwechsel falls ein Link "leer" ist
+ */
 app.directive('a', function() {
     return {
         restrict: 'E',
@@ -90,6 +104,10 @@ app.directive('a', function() {
     };
 });
 
+/**
+ * Directive zum Ausführen einer Funktion wenn ng-repeat fertig ist
+ * Diese Funktion muss als html-"tag" definiert und im jeweiligen Controller vorhanden sein
+ */
 app.directive('onFinishRender',['$timeout', function ($timeout) {
     return {
         restrict: 'A',
@@ -101,6 +119,9 @@ app.directive('onFinishRender',['$timeout', function ($timeout) {
     };
 }]);
 
+/**
+ * Formatiert m & km schön
+ */
 app.filter('distance', function () {
     return function (input) {
         var zahl = parseFloat(input);
@@ -121,6 +142,9 @@ app.filter('distance', function () {
     }
 });
 
+/**
+ * Formatiert ein Datum und ersetzt Monatszahlen durch deren Namen
+ */
 app.filter('formatdate', function () {
     return function (date) {
         if(date !== undefined){
@@ -140,7 +164,9 @@ app.filter('formatdate', function () {
     }
 });
 
-
+/**
+ * Zeigt nur das Jahr an
+ */
 app.filter('onlyyear', function () {
     return function (date) {
         if(date !== undefined){
