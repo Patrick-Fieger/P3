@@ -106,8 +106,13 @@ exports.getMessageByNearest = function(req, res) {
         
         original.sort();
 
-        for (var i = 0; i < 3; i++) {
-            smallestIDs.push(ids[distances.indexOf(original[i])])
+        var count = 0;
+
+        for (var i = 0; i < original.length; i++) {
+            if(original[i] !== original[i+1] && count<3){
+                count++;
+                smallestIDs.push(ids[distances.indexOf(original[i])])
+            }
         };
         res.status(200).send(smallestIDs).end();
     });
@@ -250,6 +255,8 @@ exports.saveMessage = function(req, res) {
     var email = d.email;
     delete(d.email);
     d.id = uuid.v4();
+    console.log(d)
+
     User.findOne({
         email: email
     }, function(err, user) {

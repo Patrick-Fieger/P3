@@ -57,7 +57,6 @@ var Timeline = ['$scope', '$http', 'MessageService', '$location', 'geolocation',
         }
         
         function updateTimeline(data, status, headers, config) {
-            console.log(data)
             $scope.messages = data;
 
             for (var i = 0; i < $scope.messages.length; i++) {

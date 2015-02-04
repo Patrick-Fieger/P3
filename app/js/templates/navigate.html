@@ -1,3 +1,6 @@
+<p ng-show="initDistance" class="nearest_place">
+    Nächste Geschichte in <span>{{nearest | distance}}</span>
+</p>
 <div class="navigate_wrapper">
     <div class="compass_wrapper">
         <div class="compass">
@@ -10,8 +13,8 @@
 <div class="card_bg"></div>
 
 <div class="footer">
-	<a href="/settings" class="icon-settings21 settingsicon"></a>
-    <div ng-show="lesen" ng-class="{fadeIn : lesen,animated : lesen}" class="pulse"></div>
-    <a ng-show="lesen" ng-class="{bounceIn : lesen,animated : lesen}" href="/post/{{href_}}" class="messagecanread"></a>
+	<a href="/login" ng-click="logout()" class="icon-settings21 settingsicon"></a>
+    <div ng-class="{fadeIn : lesen,animated : lesen,active : lesen}" class="pulse"></div>
+    <a ng-class="{bounceIn : lesen,animated : lesen,active : lesen}" href="/post/{{href_}}" class="messagecanread"></a>
     <a href="/message" class="postmessage"></a>
 </div>

@@ -1,31 +1,36 @@
-<div class="time_wrapper">
-    <div class="time_inner">
-        <ul>
-            <li ng-repeat="message in messages" on-finish-render="setPositions()">
-                <p class="timeholder">{{message.date | formatdate}}</p>
-                <a href="post/{{message.id}}" style="background:url(/uploads/{{message.photo}})">
-                <p>{{message.title}}</p>
-                </a>
-            </li>
-        </ul>
+    <div class="time_wrapper">
+        <div class="time_inner">
+            <ul>
+                <li ng-repeat="message in messages" on-finish-render="setPositions()">
+                    <p class="timeholder">{{message.date | formatdate}}</p>
+                    <a href="post/{{message.id}}" style="background:url(/uploads/{{message.photo}})">
+                    <p>{{message.title}}</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
-<div class="timeline_bg"></div>
-<div class="timeline_wrapper">
-    <div class="timeline_inner">
-    	<div ng-repeat="message in messages">
-        	<span></span>
-        	<span></span>
-        	<span></span>
-        	<span></span>
-        	<span></span>
-        	<span></span>
-        	<span></span>
-        	<span></span>
-        	<span></span>
-        	<span class="big" year="{{message.date | onlyyear}}"></span>
-    	</div>
+    <div class="timeline_bg"></div>
+    <div class="timeline_wrapper">
+        <div class="timeline_inner">
+        	<div ng-repeat="message in messages">
+            	<span></span>
+            	<span></span>
+            	<span></span>
+            	<span></span>
+            	<span></span>
+            	<span></span>
+            	<span></span>
+            	<span></span>
+            	<span></span>
+            	<span class="big" year="{{message.date | onlyyear}}"></span>
+        	</div>
+        </div>
     </div>
-</div>
+    
+    <a href="/navigate" class="compassback"></a>
 
-<a href="/navigate" class="compassback"></a>
+
+
+<div class="time_wrapper_bg"></div>
+<div class="card_bg"></div>

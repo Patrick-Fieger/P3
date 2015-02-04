@@ -23,8 +23,8 @@ var Message = ['$scope', '$http', 'MessageService', '$location','geolocation','$
             setTimeout(function(){
                 if($rootScope.samePlace !== undefined && $rootScope.samePlace !== ''){
                     if (confirm('Passt dein Ereigniss zu "'+$rootScope.samePlaceTitle+'"?')) {
-                        $scope.Message.position = $rootScope.samePlace;
-                        console.log($scope.Message.position)
+                        localStorage.setItem('lat',$rootScope.samePlace[0])
+                        localStorage.setItem('long',$rootScope.samePlace[1])
                     } else {
                         getGeo();
                     }
@@ -33,41 +33,64 @@ var Message = ['$scope', '$http', 'MessageService', '$location','geolocation','$
                 }
                 counter = 0;
             },1000);
-        };
+        }
 
+        $scope.cancel = function(){
+            if (confirm('Wollen sie wirklich diese Seite verlassen? \n Alle eingegebenen Daten gehen hierbei verloren!')) {
+                $location.path('/navigate');
+            }
+        }
 
         function getGeo(){
             geolocation.getLocation({enableHighAccuracy: true}).then(function(data){
-                $scope.Message.position[0] = data.coords.latitude;
-                $scope.Message.position[1] = data.coords.longitude;
+                localStorage.setItem('lat',data.coords.latitude)
+                localStorage.setItem('long',data.coords.longitude)
             });
         }
 
         $scope.sendMessage = function() {
+            NProgress.start();
             MessageService.sendPhoto($scope.photo).success(sendDetails).error(photofail);
         }
 
         function photofail() {
-            alert('Photo Upload fehlgeschlagen')
+            NProgress.done();
+            $rootScope.showNotification('Bild Upload fehlgeschlagen!','error');
         }
 
         function sendDetails(data) {
             var currentdate = new Date();
             $scope.Message.date[1] = currentdate.getHours() + ":" + currentdate.getMinutes();
             $scope.Message.photo = data;
-            $scope.Message.position[0] = parseFloat($scope.Message.position[0]);
-            $scope.Message.position[1] = parseFloat($scope.Message.position[1]);
+            $scope.Message.position[0] = parseFloat(localStorage.getItem('lat'));
+            $scope.Message.position[1] = parseFloat(localStorage.getItem('long'));
             MessageService.postMessage($scope.Message).success(MessageSaved).error(MessageSavedFail);
         }
 
 
         function MessageSaved(status){
-            console.log('abgespeichert!!!!');
+            NProgress.done();
+            $rootScope.showNotification('Die Geschichte wurde erfolgreich eingereicht!','ok');
+            $location.path('/navigate');
         }
 
         function MessageSavedFail(status){
-
+            NProgress.done();
+            $rootScope.showNotification('Speicherung der Geschichte fehlgeschlagen!','error');
         }
 
+        $(document).on('change', 'input[type="file"]', function(evt) {
+            event.preventDefault();
+            var tgt = evt.target || window.event.srcElement,
+            files = tgt.files;
+            if (FileReader && files && files.length) {
+                var fr = new FileReader();
+                fr.onload = function () {
+                    $('.img_place_wrapper').show();
+                    $('#imageplace').attr('src',fr.result);
+                }
+                fr.readAsDataURL(files[0]);
+            }
+        });
     }
 ];

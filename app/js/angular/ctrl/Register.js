@@ -1,4 +1,4 @@
-var Register = ['$scope', '$http','UserService','$location',function ($scope, $http,UserService,$location) {
+var Register = ['$scope', '$http','UserService','$location','$rootScope',function ($scope, $http,UserService,$location,$rootScope) {
     $scope.data = {
         "email": "",
         "password": ""
@@ -7,11 +7,11 @@ var Register = ['$scope', '$http','UserService','$location',function ($scope, $h
         UserService.register($scope.data).success(registersucess).error(registerfail);
     }
 
-    function registersucess(data) {
-        console.log(data)
+    function registersucess() {
+        $rootScope.showNotification('Registrierung erfolgreich! Bitte loggen sie sich ein!','ok');
     }
 
     function registerfail() {
-        console.log('registerfail')
+        $rootScope.showNotification('Registrierung fehlgeschlagen!','error');
     }
 }];

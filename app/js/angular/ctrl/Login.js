@@ -1,4 +1,4 @@
-var Login = ['$scope', '$http','UserService','$location',function ($scope, $http,UserService,$location) {
+var Login = ['$scope', '$http','UserService','$location','$rootScope',function ($scope, $http,UserService,$location,$rootScope) {
     $scope.data = {
         "email": "",
         "password": ""
@@ -14,6 +14,10 @@ var Login = ['$scope', '$http','UserService','$location',function ($scope, $http
     }
 
     function faillogin(data, status, headers, config) {
-        console.log(status);
+        if(status == 404){
+            $rootScope.showNotification('Benutzer nicht gefunden!','error');
+        }else{
+            $rootScope.showNotification('Das Passwort ist nicht korrekt!','error');
+        }
     }
 }];
