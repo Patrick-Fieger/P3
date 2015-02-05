@@ -6,8 +6,8 @@ Date.prototype.toDateInputValue = (function() {
 
 var counter = 0
 
-var Message = ['$scope', '$http', 'MessageService', '$location','geolocation','$rootScope',
-    function($scope, $http, MessageService, $location,geolocation,$rootScope) {
+var Message = ['$scope', '$http', 'MessageService', '$location','geolocation','$rootScope','$timeout',
+    function($scope, $http, MessageService, $location,geolocation,$rootScope,$timeout) {
         $scope.Message = {
             email: localStorage.getItem('user'),
             position: [],
@@ -15,7 +15,7 @@ var Message = ['$scope', '$http', 'MessageService', '$location','geolocation','$
             readed: 0,
             id: "",
             date: [new Date().toDateInputValue(),''],
-            title: "",
+            title: "Project Go! Präsentation",
             message: ""
         }
         
@@ -50,7 +50,9 @@ var Message = ['$scope', '$http', 'MessageService', '$location','geolocation','$
 
         $scope.sendMessage = function() {
             NProgress.start();
-            MessageService.sendPhoto($scope.photo).success(sendDetails).error(photofail);
+            $('.container').addClass('fadeoutpres');
+            //MessageService.sendPhoto($scope.photo).success(sendDetails).error(photofail);
+            MessageSaved();
         }
 
         function photofail() {
@@ -68,10 +70,11 @@ var Message = ['$scope', '$http', 'MessageService', '$location','geolocation','$
         }
 
 
-        function MessageSaved(status){
-            NProgress.done();
-            $rootScope.showNotification('Die Geschichte wurde erfolgreich eingereicht!','ok');
-            $location.path('/navigate');
+        function MessageSaved(){
+            $timeout(function(){
+                NProgress.done();
+                $rootScope.showNotification('Die Geschichte wurde erfolgreich gespeichert!','ok');
+            },2000)
         }
 
         function MessageSavedFail(status){
@@ -88,6 +91,7 @@ var Message = ['$scope', '$http', 'MessageService', '$location','geolocation','$
                 fr.onload = function () {
                     $('.img_place_wrapper').show();
                     $('#imageplace').attr('src',fr.result);
+                    localStorage.setItem('img',fr.result);
                 }
                 fr.readAsDataURL(files[0]);
             }

@@ -68,7 +68,22 @@ exports.getMessageById = function(req, res) {
             console.log(err);
         }
         if (messages) {
-            res.status(200).send(messages[0].messages[0]).end();
+
+            var messagesArray = [];
+            for (var i = 0; i < messages.length; i++) {
+                for (var n = 0; n < messages[i].messages.length; n++) {
+                    messagesArray.push(messages[i].messages[n])
+
+
+                };
+            };
+
+            // for (var i = 0; i < messagesArray[0].length; i++) {
+            //             messagesArray[i]
+            // };
+
+            // console.log(messagesArray[0].length)
+            res.status(200).send(messagesArray).end();
         }
     });
 }
