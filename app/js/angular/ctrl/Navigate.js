@@ -23,7 +23,6 @@ var Navigate = ['$scope', '$http', 'MessageService', '$state', 'geolocation','$r
                 // if(data.coords.accuracy < 15) circle = 15
                 // else circle = data.coords.accuracy
                 $scope.currentLocation = new LatLon(data.coords.latitude, data.coords.longitude);
-                $scope.currentLocation = new LatLon(49.90213473797767, 8.857207540430920);
                 
                 if (withmessage) {
                     MessageService.getNearestMessagesByLocation($scope.currentLocation).success(loadMessages);
@@ -58,37 +57,30 @@ var Navigate = ['$scope', '$http', 'MessageService', '$state', 'geolocation','$r
                 allmessages[i][1] = $scope.messages[i].id
             }
 
-            $timeout(function(){
-                $scope.lesen = true;
-            },4000)
-            $scope.href_ = "b8c14ef9-72f2-4af8-9475-1b6d9d388f5c";
-            $rootScope.samePlace = [49.90213473797767,8.857207540430927];
-            $rootScope.samePlaceTitle = "Wohntürme sollen abgerissen werden";
 
-            // getsmalest.sort();
+            getsmalest.sort();
 
-            // for (var i = 0; i < allmessages.length; i++) {
-            //     if(allmessages[i][0] == getsmalest[0] && (allmessages[i][0] * 1000) < parseInt(circle)){
-            //         count++;
-            //         $scope.lesen = true;
-            //         $scope.href_ = allmessages[i][1];
-                    
+            for (var i = 0; i < allmessages.length; i++) {
+                if(allmessages[i][0] == getsmalest[0] && (allmessages[i][0] * 1000) < parseInt(circle)){
+                    count++;
+                    $scope.lesen = true;
+                    $scope.href_ = allmessages[i][1];
 
-            //         for (var n = 0; n < $scope.messages.length; n++) {
-            //             if(allmessages[i][1] == $scope.messages[n].id){
-            //                 $rootScope.samePlace = $scope.messages[n].position;
-            //                 $rootScope.samePlaceTitle = $scope.messages[n].title;
-            //             }
-            //         };
-            //     }
+                    for (var n = 0; n < $scope.messages.length; n++) {
+                        if(allmessages[i][1] == $scope.messages[n].id){
+                            $rootScope.samePlace = $scope.messages[n].position;
+                            $rootScope.samePlaceTitle = $scope.messages[n].title;
+                        }
+                    };
+                }
 
 
-            //     if(i == allmessages.length-1){
-            //         if(count==0){
-            //             $scope.lesen = false;
-            //         }
-            //     }
-            // };
+                if(i == allmessages.length-1){
+                    if(count==0){
+                        $scope.lesen = false;
+                    }
+                }
+            };
         }
         
         function calculateDistanceAndBearing() {

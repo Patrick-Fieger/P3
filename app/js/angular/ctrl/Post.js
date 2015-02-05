@@ -6,7 +6,7 @@ var Post = ['$scope', '$http', 'MessageService', '$location', 'geolocation', '$s
         $scope.href;
 
         function showData(data, status, headers, config) {
-            message = data;
+            message = data[0];
             message.photo = '/uploads/' + message.photo;
             message.date = message.date[0];
             $scope.message = message;

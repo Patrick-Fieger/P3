@@ -15,7 +15,7 @@ var Message = ['$scope', '$http', 'MessageService', '$location','geolocation','$
             readed: 0,
             id: "",
             date: [new Date().toDateInputValue(),''],
-            title: "Project Go! Präsentation",
+            title: "",
             message: ""
         }
         
@@ -50,9 +50,7 @@ var Message = ['$scope', '$http', 'MessageService', '$location','geolocation','$
 
         $scope.sendMessage = function() {
             NProgress.start();
-            $('.container').addClass('fadeoutpres');
-            //MessageService.sendPhoto($scope.photo).success(sendDetails).error(photofail);
-            MessageSaved();
+            MessageService.sendPhoto($scope.photo).success(sendDetails).error(photofail);
         }
 
         function photofail() {
@@ -74,6 +72,7 @@ var Message = ['$scope', '$http', 'MessageService', '$location','geolocation','$
             $timeout(function(){
                 NProgress.done();
                 $rootScope.showNotification('Die Geschichte wurde erfolgreich gespeichert!','ok');
+                $location.path('/navigate');
             },2000)
         }
 

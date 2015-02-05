@@ -86,7 +86,6 @@ app.run(['$rootScope','$timeout',function($rootScope,$timeout) {
         $rootScope.alerttext = text;
         $timeout(function(){
             $rootScope.notibool = false;
-            $('.container').addClass('fadeoutall');
         },6000)
     }
 
