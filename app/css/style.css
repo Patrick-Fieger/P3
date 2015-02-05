@@ -296,6 +296,16 @@ input:focus:-ms-input-placeholder {
   transition: all .25s ease-in-out;
 }
 
+.container.fadeoutpres{
+  opacity: 0.3
+}
+
+.container.fadeoutall{
+  opacity: 0;
+}
+
+
+
 .container{
   height: 100%;
 }
