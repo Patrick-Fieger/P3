@@ -1,3 +1,4 @@
+
 body,html{
   margin: 0;
   padding: 0;
@@ -5,6 +6,58 @@ body,html{
   font-family: 'Muli', serif;
 }
 
+.testklick div{
+	display: inline-block;
+	width: 700px;
+	height: auto;
+	color: #ffffff;
+	background-color: #C60B0E;
+  padding: 10px;
+}
+
+/*Buisnesplan*/
+.businessnav{
+  /*background-color: #C60B0E;*/
+  margin-left:-40px;
+  margin-right:20px;
+}
+
+.businessnav li{
+  color: #ffffff;
+  background-color: #C60B0E;
+  display: inline-block;
+  width:180px;
+  padding: 10px;
+  font-size: 15px;
+  list-style: none;
+}
+
+.businessplan h1{
+  letter-spacing: 0.02em;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 32px;
+  font-family: 'Roboto', sans-serif;
+  margin-left: -12px;
+  line-height: 1.2;
+  margin-top: 10px;
+  margin-bottom: 14px;
+  color: #646464;
+}
+
+.businessnav li:hover {
+  background-color: #f3f1e4;
+  color: #646464;
+}
+
+.plan{
+  display:none;
+  height: 500px;
+}
+
+.active-plan{
+  display: inline-block;
+}
 
 .pushy a,
 .profiles p{
@@ -80,13 +133,15 @@ article p{
   line-height: 1.5;
 }
 
-h1,
-h2,
+
+/*h2,
 h3,
 h4,
 h5{
-  font-family: 'Oswald', sans-serif;
-}
+  font-family: 'Roboto', sans-serif;
+  font-size: 32px;
+  color:#646464;
+}*/
 
 
 article h1{
@@ -97,6 +152,18 @@ article h1{
   margin-left: -12px;
   line-height: 1.2;
   margin-top: 40px;
+  margin-bottom: 14px;
+}
+
+article h2{
+  letter-spacing: 0.02em;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 32px;
+  font-family: 'Roboto', sans-serif;
+  margin-left: -12px;
+  line-height: 1.2;
+  margin-top: 10px;
   margin-bottom: 14px;
 }
 
