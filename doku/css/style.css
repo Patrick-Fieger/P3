@@ -176,6 +176,11 @@ display:none;
   background-image: url(../img/chapters/time-management.jpg);
 }
 
+
+#chapterprogramming{
+  background-image: url(../img/chapters/prog.jpg);
+}
+
 #chapterquellen{
   background-image: url(../img/chapters/quellen.jpg);
 }
@@ -454,7 +459,7 @@ svg path{
 
 .pushy{
     position: fixed;
-    width: 260px;
+    width: 320px;
     height: 100%;
     top: 0;
     z-index: 9999;
@@ -492,11 +497,11 @@ svg path{
 }
 
 .pushy-left{
-    -webkit-transform: translate3d(-260px,0,0);
-    -moz-transform: translate3d(-260px,0,0);
-    -ms-transform: translate3d(-260px,0,0);
-    -o-transform: translate3d(-260px,0,0);
-    transform: translate3d(-260px,0,0);
+    -webkit-transform: translate3d(-320px,0,0);
+    -moz-transform: translate3d(-320px,0,0);
+    -ms-transform: translate3d(-320px,0,0);
+    -o-transform: translate3d(-320px,0,0);
+    transform: translate3d(-320px,0,0);
 }
 
 .pushy-open{
@@ -508,11 +513,11 @@ svg path{
 }
 
 .container-push, .push-push{
-    -webkit-transform: translate3d(260px,0,0);
-    -moz-transform: translate3d(260px,0,0);
-    -ms-transform: translate3d(260px,0,0);
-    -o-transform: translate3d(260px,0,0);
-    transform: translate3d(260px,0,0);
+    -webkit-transform: translate3d(320px,0,0);
+    -moz-transform: translate3d(320px,0,0);
+    -ms-transform: translate3d(320px,0,0);
+    -o-transform: translate3d(320px,0,0);
+    transform: translate3d(320px,0,0);
 }
 
 .menu-btn-push{
@@ -634,5 +639,47 @@ svg path{
 }
 
 
+/*Table*/
 
+
+table{
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+thead{
+  display: table-header-group;
+  vertical-align: middle;
+  border-top-color: inherit;
+  border-right-color: inherit;
+  border-bottom-color: inherit;
+  border-left-color: inherit;
+}
+
+tr{
+  display: table-row;
+  vertical-align: inherit;
+  border-top-color: inherit;
+  border-right-color: inherit;
+  border-bottom-color: inherit;
+  border-left-color: inherit;
+}
+
+
+
+th,td{
+  border-style: dashed;
+  border-width: 1px;
+  border-color: #ccc;
+  padding: 8px;
+}
+
+th{
+  border-style: solid;
+  font-weight: bolder;
+  border-color: #000;
+}
 
