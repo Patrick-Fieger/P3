@@ -1,3 +1,6 @@
+/**
+ * Controller für Login
+ */
 var Login = ['$scope', '$http','UserService','$location','$rootScope',function ($scope, $http,UserService,$location,$rootScope) {
     $scope.data = {
         "email": "",

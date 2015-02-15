@@ -1,3 +1,6 @@
+/**
+ * Erweiterung des Date Objektes um ein Datum für ein Input-Feld zu formatieren
+ */
 Date.prototype.toDateInputValue = (function() {
     var local = new Date(this);
     local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
@@ -5,7 +8,10 @@ Date.prototype.toDateInputValue = (function() {
 });
 
 var counter = 0
-
+/**
+ * Controller für die neuerstellung einer Geschichte
+ * Zuerst wird das Bild hochgeladen, danach wird die eigentliche Geschichte mit dem Pfad zum Bild abgespeichert
+ */
 var Message = ['$scope', '$http', 'MessageService', '$location','geolocation','$rootScope','$timeout',
     function($scope, $http, MessageService, $location,geolocation,$rootScope,$timeout) {
         $scope.Message = {
@@ -21,6 +27,9 @@ var Message = ['$scope', '$http', 'MessageService', '$location','geolocation','$
         
         if (++counter == 1) {
             setTimeout(function(){
+                /**
+                 * Checkt ob wir die Möglichkeit haben ein Zeitstrahlelement zu erzeugen oder nicht
+                 */
                 if($rootScope.samePlace !== undefined && $rootScope.samePlace !== ''){
                     if (confirm('Passt dein Ereigniss zu "'+$rootScope.samePlaceTitle+'"?')) {
                         localStorage.setItem('lat',$rootScope.samePlace[0])
@@ -81,6 +90,9 @@ var Message = ['$scope', '$http', 'MessageService', '$location','geolocation','$
             $rootScope.showNotification('Speicherung der Geschichte fehlgeschlagen!','error');
         }
 
+        /**
+         * Zeigt eine Vorschau des Bildes unterhalb des Uploads
+         */
         $(document).on('change', 'input[type="file"]', function(evt) {
             event.preventDefault();
             var tgt = evt.target || window.event.srcElement,
@@ -90,7 +102,6 @@ var Message = ['$scope', '$http', 'MessageService', '$location','geolocation','$
                 fr.onload = function () {
                     $('.img_place_wrapper').show();
                     $('#imageplace').attr('src',fr.result);
-                    localStorage.setItem('img',fr.result);
                 }
                 fr.readAsDataURL(files[0]);
             }

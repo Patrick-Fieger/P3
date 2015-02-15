@@ -1,3 +1,8 @@
+/**
+ * Controller zum Anzeigen einer einzelnen Geschichte
+ * Wenn ein Zeitstrahl vorhanden ist leitet er beim "Zurückbutton" automatisch auf diesen weiter,
+ * falls nicht würden wir wieder auf dem Kompass landen
+ */
 var Post = ['$scope', '$http', 'MessageService', '$location', 'geolocation', '$stateParams',
     function($scope, $http, MessageService, $location, geolocation, $stateParams) {
         var route = $stateParams.id

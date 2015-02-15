@@ -1,3 +1,6 @@
+/**
+ * Controller zum Anzeigen des Kompasses
+ */
 var Navigate = ['$scope', '$http', 'MessageService', '$state', 'geolocation','$rootScope','$location','$timeout',
     function($scope, $http, MessageService, $state, geolocation, $rootScope,$location,$timeout) {
         $scope.currentLocation;
@@ -20,8 +23,9 @@ var Navigate = ['$scope', '$http', 'MessageService', '$state', 'geolocation','$r
             geolocation.getLocation({
                 enableHighAccuracy: true
             }).then(function(data) {
-                // if(data.coords.accuracy < 15) circle = 15
-                // else circle = data.coords.accuracy
+                // Umkreis zum Lesen einer Geschichte muss mindestens 15 Meter sein
+                if(data.coords.accuracy < 15) circle = 15
+                else circle = data.coords.accuracy
                 $scope.currentLocation = new LatLon(data.coords.latitude, data.coords.longitude);
                 
                 if (withmessage) {
@@ -30,9 +34,9 @@ var Navigate = ['$scope', '$http', 'MessageService', '$state', 'geolocation','$r
             });
         }
 
+        // Funktion zum Laden der überlieferten ID's
         function loadMessages(data, status, headers, config) {
             $scope.messages = [];
-            console.log(data)
             var count = 0;
             for (var i = 0; i < data.length; i++) {
                 MessageService.getMessageById(data[i]).success(function(data, status, headers, config) {
@@ -47,6 +51,10 @@ var Navigate = ['$scope', '$http', 'MessageService', '$state', 'geolocation','$r
             };
         }
         
+        /**
+         * Checkt ob sich eine Nachricht in meiner Nähe befindet
+         * und zeigt gegebenenfalls den Lesen-Button an
+         */
         function showMessageIfNear(){
             var count = 0;
             var getsmalest = [];
@@ -83,6 +91,10 @@ var Navigate = ['$scope', '$http', 'MessageService', '$state', 'geolocation','$r
             };
         }
         
+        /**
+         * Funktion zum Berechnen der Kompassdrehung und den dazugehörigen Winkeln der einzelnen Geschichten
+         * Außerdem zur Berechnung welche Geschichte mir am nähsten ist --> Text-Aktuallisierung + Kompass stärkere opacity
+         */
         function calculateDistanceAndBearing() {
             if (ready) {
                 bearing = [];

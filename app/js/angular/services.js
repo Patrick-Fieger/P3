@@ -1,6 +1,10 @@
 var url = 'http://project-go.me/server/';
 angular.module('app.services', [])
 
+/**
+ * Service um Funktionen in Controllern freizugeben
+ * Alle Funktionen die auf einen User angewendet werden können
+ */
 .service('UserService', function($http){
 	var login = function(data){
 		return $http.post(url + 'login', data)
@@ -26,6 +30,11 @@ angular.module('app.services', [])
 		deleteAccount : deleteAccount
 	}
 })
+
+/**
+ * Service um Funktionen in Controllern freizugeben
+ * Alle Funktionen die auf eine Geschichte angewendet werden können
+ */
 .service('MessageService', function($http){
 	var getMessageById = function(id){
 		return $http.post(url + 'messagebyid',{id:id})
@@ -74,6 +83,9 @@ angular.module('app.services', [])
 		isTimelineAvailable : isTimelineAvailable
 	}
 })
+/**
+ * Directive um ein Bild hochzuladen
+ */
 .directive('fileModel', ['$parse', function ($parse) {
     return {
         restrict: 'A',

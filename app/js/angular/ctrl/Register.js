@@ -1,3 +1,6 @@
+/**
+ * Controller für die Registrierung
+ */
 var Register = ['$scope', '$http','UserService','$location','$rootScope',function ($scope, $http,UserService,$location,$rootScope) {
     $scope.data = {
         "email": "",
