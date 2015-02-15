@@ -1,6 +1,6 @@
 
 		<article>
-			<div class="NewChapter">
+			<div class="NewChapter" id="chapterwalkthrough">
 				<div class="NewChapterTextbox">
 					<h1 class="animated">WALKTHROUGH</h1>
 				</div>
@@ -9,7 +9,7 @@
 
 				<div class="wt-active wtstate" id="radarohne">
 					<div class="large-8 columns">
-						<h2>Radar</h2>
+						<h2>Kompass</h2>
 						<p class="animated">Beim Starten der Platform öffnet sich zuerst der Kompass. Dieser zeigt dem Nutzer in welchen Richtungen die nächsten Geschichten liegen. Durch den Kompass erfährt der Nutzer nicht direkt wo genau die nächste Geschichte sich befindet und kann so auf dem Weg dorthin neue Orte entdecken, denn Umwege erhöhen die Ortskenntnis. Im Moment befinden wir uns an einem Ort, an dem es keine Geschichten zu lesen gibt. 
 						</p>
 						<h3>Das sind die Möglichkeiten</h3>
@@ -19,30 +19,89 @@
 						</ul>
 					</div>
 					<div class="large-4 columns">
-						<figure class="withnotes animated">
-							<img class="image" src="img/walkthrough/Demo_Radar_mit.gif">
-						</figure>
+							<video width="237px" autoplay loop>
+							  <source src="img/walkthrough/Demo_Kompass_ohne.mp4" type="video/mp4">
+							</video>
 					</div>
 				</div>
 				
 				<div class="wtstate" id="radarmit">
 					<div class="large-8 columns">
-						<h2>Radar</h2>
+						<h2>Kompass</h2>
 						<p class="animated">Nun befinden wir uns an einer Stelle, an der es Geschichten gibt. Sobald der Nutzer im Radius von 15m in der Nähe ist, taucht unten in der Mitte ein neuer Button auf. Durch die Pulsierende Animation soll man bemerken, das es nicht die ganze Zeit da gewesen ist. 
 						</p>
 						<h3>Das sind die Möglichkeiten</h3>
 						<ul>
-							<li>Weiter laufen zu einem Ort, an dem es noch nichts zu sehen gib</li>
-							<li>Geschichte Öffnen</li>
-							<li>Wir schreiben zu dem aktuellen Ort eine Geschichte die wir kennen</li>
+							<li class="btnradarohne">Weiter laufen zu einem Ort, an dem es noch nichts zu sehen gib</li>
+							<li class="btnlesen">Geschichte Öffnen</li>
+							<li class="btnschreiben">Wir schreiben zu dem aktuellen Ort eine Geschichte die wir kennen</li>
+						</ul>
+					</div>
+					<div class="large-4 columns">
+							<video width="237px" autoplay loop>
+							  <source src="img/walkthrough/Demo_Kompass_mit.mp4" type="video/mp4">
+							</video>
+					</div>
+				</div>
+
+				<div class="wtstate" id="statelesen">
+					<div class="large-8 columns">
+						<h2>Geschichte lesen</h2>
+						<p class="animated">Projekt GO! zeigt dem Nutzer die chronologisch letzte Geschichte, welche zu diesem Ort verfügbar ist. Der Nutzer sieht ein Bild zu diesem Ereignis, das Datum wann die Geschichte geschah und natürlich der Inhalt selbst.
+						</p>
+						<h3>Das sind die Möglichkeiten</h3>
+						<ul>
+							<li class="btnzeitstrahl">Klick zurück, damit kommt man entweder zum Zeitstrahl, oder zum Kompass, sollten keine weiteren Ereignisse an diesem Ort verfügbar sein</li>
+						</ul>
+					</div>
+					<div class="large-4 columns">
+						<video width="237px" autoplay loop style="margin-top:30px">
+							  <source src="img/walkthrough/Demo_lesen.mp4" type="video/mp4">
+							</video>
+					</div>
+				</div>
+
+				<div class="wtstate" id="statezeitstrahl">
+					<div class="large-8 columns">
+						<h2>Zeitstrahl</h2>
+						<p class="animated">Hier werden dem Nutzer alle Ereignisse chronologisch präsentiert. Die Bilder und Überschriften geben einem bereits eine gute Vorschau auf das Ereignis. Der Nutzer kann entweder ganz langsam über die Bilder durch streichen nach rechts und links chronologisch weitergehen, oder durch wischen unten am Zeitstrahl größere Zeitsprünge machen.
+						</p>
+						<h3>Das sind die Möglichkeiten</h3>
+						<ul>
+							<li class="btnlesen">Öffne eine Geschichte</li>
+							<li class="btnradarohne">Gehe zurück zum Kompass</li>
 						</ul>
 					</div>
 					<div class="large-4 columns">
 						<figure class="withnotes animated">
-							<img class="image" src="img/walkthrough/Demo_Radar_mit.gif">
+							<img class="image" src="img/walkthrough/Demo_Zeitleiste.gif">
 						</figure>
 					</div>
 				</div>
+
+				<div class="wtstate" id="stateschreiben">
+					<div class="large-8 columns">
+						<h2>Geschichte schreiben</h2>
+						<p class="animated">Zum erstellen eines neuen Ereignisses ist es notwendig, das man sich einloggt. Somit können wir genau zuordnen wer welche Posts gemacht haben und bei Rückmeldungen direkt diese Leute kontaktieren.
+						Befindet sich Vorort bereits ein Ereignis werden wir gefragt, ob unsere Geschichte zu dem Ort eines bestehenden Ereignisses gehört. Somit verhindern wir, das zu viele Neue Punkte direkt nebeneinander gesetzt werden. 
+						Zu erst dürfen wir unserer Geschichte einen Titel geben, geben ein Datum an, und schreiben was passiert ist. Optional kann man auch ein Foto hinzufügen.
+						Beim Abschicken Bedankt sich die App beim Nutzer und weist darauf hin, dass sein Eintrag zuerst überprüft wird, bevor er veröffentlicht wird. Somit verhindern wir das keine Unwichtigkeiten oder rechtswidrigen Inhalte angezeigt werden.
+						</p>
+						<h3>Das sind die Möglichkeiten</h3>
+						<ul>
+							<li class="btnradarohne">Durch Fertigstellen des Eintrags oder Abbruch kommt man in beiden Fällen zurück zum Kompass</li>
+						</ul>
+					</div>
+					<div class="large-4 columns">
+							<video width="237px" autoplay loop>
+							  <source src="img/walkthrough/Demo_Schreiben.mp4" type="video/mp4">
+							</video>
+					</div>
+				</div>
 			</div>
+			<h1>Wireframes</h1>
+			<figure class="withnotes animated">
+				<img class="image" src="img/walkthrough/wireframes.jpg">
+			</figure>
 			<script src='js/custom/walkthrough.js'></script>
 		</article>

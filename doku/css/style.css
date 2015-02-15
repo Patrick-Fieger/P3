@@ -21,7 +21,7 @@ body,html{
 
 .Walkthrough{
 display: inline-block;
-height: 555px;
+height: auto;
 margin-top: 50px;
 }
 
@@ -30,12 +30,18 @@ box-shadow: 0px 0px 0px #ffffff;
 margin: auto;
 margin-top: -50px;
 }
+.Walkthrough video{
+  display: inline-block;
+margin: auto;
+margin-top: 30px;
+}
 
 .Walkthrough li{
  color: #ffffff;
   background-color: #C60B0E;
   display: inline-block;
   width: 500px;
+  border: solid 1px;
   padding: 10px;
   margin:1px;
   font-size: 15px;
@@ -46,6 +52,8 @@ margin-top: -50px;
   background-color: #f3f1e4;
   color: #646464;
   cursor: pointer;
+  border: solid 1px;
+  border-color: #646464;
 }
 
 .wtstate{
@@ -112,10 +120,14 @@ margin-top: -50px;
   font-size: 15px;
   list-style: none;
   text-align: center;
+  border: solid 1px;
 }
 
 .finanzierungstabelleformate li:hover{
 cursor: pointer;
+color: #646464;
+background-color: #f3f1e4;
+border-color: #646464;
 }
 
 .finanzierungstabelleformate a{
@@ -222,6 +234,10 @@ display:none;
 
 #chapterquellen{
   background-image: url(../img/chapters/quellen.jpg);
+}
+
+#chapterwalkthrough{
+  background-image: url(../img/chapters/walking.jpg);
 }
 
 #FirstChapter img{
