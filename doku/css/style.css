@@ -738,3 +738,50 @@ th{
   border-color: #000;
 }
 
+.showbeitrag_list{
+  display: table;
+  margin-bottom: 30px;
+}
+
+.showbeitrag_list li{
+  float: left;
+  padding: 0px 10px;
+  border-right: 1px solid black;
+  font-size: 22px;
+}
+
+.showbeitrag_list li.active_{
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
+.showbeitrag_list li:hover{
+  cursor: pointer;
+}
+
+.showbeitrag{
+  display: none;
+}
+
+.showbeitrag.active_{
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

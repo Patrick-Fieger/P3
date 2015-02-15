@@ -87,6 +87,15 @@ $(document).on('click', '.pushy a', function(event) {
 	}
 });
 
+$(document).on('click', '.showbeitrag_list li', function(event) {
+	$('.showbeitrag_list li,.showbeitrag').removeClass('active_');
+	$(this).addClass('active_');
+
+	$('.showbeitrag[showbeitrag="'+$(this).attr('showbeitrag')+'"]').addClass('active_')
+});
+
+
+
 function scrollToSection(attr,id){
 	$('html,body').animate({scrollTop: $('['+attr+'="'+id+'"]').offset().top-50}, scrollSpeed ,'easeInOutExpo');
 }
