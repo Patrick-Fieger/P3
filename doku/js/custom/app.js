@@ -53,7 +53,7 @@ function loadHtml(loaded){
 
 // Fügt Klassen und attribute für die Animationen hinzu
 function addAttributesToElements(){
-	$('p:not(.noanim),blockquote,figure,h1,.trenner,iframe').each(function(index, el) {
+	$('p:not(.noanim),blockquote,figure,h1,h2,h3,h4,h5,.trenner,iframe').each(function(index, el) {
 		$(this).addClass('animated').attr({
 			"data-animation-delay" : 150,
 			"data-animation" : 'fadeIn'
