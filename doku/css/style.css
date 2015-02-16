@@ -972,12 +972,16 @@ th{
 .designintro_wrapper_item{
   float: left;
   width: 800px;
+
 }
 
 .designintro_wrapper_item img{
   height: 400px;
   display: block;
   margin: 0 auto 50px auto;
+  box-shadow: 0px 0px 10px #aaaaaa;
+  border: solid 5px;
+  border-color: #ffffff;
 }
 
 .designintro_wrapper_item p{
