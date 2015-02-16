@@ -257,6 +257,44 @@ display:none;
   line-height: 1.5;
 }
 
+/* --- Visuel Design --- */
+
+.visuelldesignbox{
+  display: inline-block;
+  height: 250px;
+}
+
+.visuelldesignbox em{
+font-style: italic;
+font-weight: 400;
+font-size: 22px;
+}
+
+.farbbox{
+  display: block;
+  height: 237px;
+  box-shadow: 0px 0px 5px #646464;
+}
+#farbbox_beige{
+  background-color: #f4f1e3;
+}
+
+#farbbox_rot{
+  background-color: #be6d5f;
+}
+
+#farbbox_grau{
+  background-color: #646464;
+}
+
+#farbbox_blau{
+  background-color: #7dc9c9;
+}
+
+#farbbox_gruen{
+  background-color: #c0dc37;
+}
+
 /* --- Statusreports --- */
 
 .statusreports li{
