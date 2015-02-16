@@ -7,13 +7,12 @@ body,html{
   background-color: #f3f1e4; 
 }
 
-
 .testklick div{
 	display: inline-block;
 	width: 700px;
 	height: auto;
 	color: #ffffff;
-	background-color: #C60B0E;
+	background-color: #B7483F; /*altes rot: #c60B0E*/;
   padding: 10px;
 }
 
@@ -38,9 +37,9 @@ margin-top: 30px;
 
 .Walkthrough li{
  color: #ffffff;
-  background-color: #C60B0E;
+  background-color: #B7483F;
   display: inline-block;
-  width: 500px;
+  width: auto;
   border: solid 1px;
   padding: 10px;
   margin:1px;
@@ -66,14 +65,14 @@ margin-top: 30px;
 
 /* --- Buisnesplan --- */
 .businessnav{
-  /*background-color: #C60B0E;*/
+  /*background-color: #B7483F;*/
   margin-left:-40px;
   margin-right:20px;
 }
 
 .businessnav li{
   color: #ffffff;
-  background-color: #C60B0E;
+  background-color: #B7483F;
   display: inline-block;
   width:180px;
   padding: 10px;
@@ -112,7 +111,7 @@ margin-top: 30px;
 /* --- Finanzierungsplan --- */
 .finanzierungstabelleformate li{
   color: #ffffff;
-  background-color: #C60B0E;
+  background-color: #B7483F;
   display: inline-block;
   margin-right: 25px;
   width:180px;
@@ -132,6 +131,89 @@ border-color: #646464;
 
 .finanzierungstabelleformate a{
 color: #ffffff;
+}
+
+/* --- Zielgruppe --- */
+.personwriter{
+  display: inline-block;
+  height: 280px; 
+  margin-bottom: 50px;
+}
+
+.personwriter img{
+  box-shadow: 0px 0px 0px #aaaaaa;
+  height: 250px;
+  margin-top: -70px;
+}
+
+.personreader{
+  display: inline-block;
+  height: 280px; 
+  margin-bottom: 50px;
+}
+
+.personreader img{
+  box-shadow: 0px 0px 0px #aaaaaa;
+  height: 280px;
+  margin-top: -100px;
+}
+
+/* --- Szenarien --- */
+
+.szenario{
+display:none;
+}
+
+.active-szenario{
+  display: inline-block;
+  min-height: 400px;
+}
+
+#previousszenario{
+  height: 50px;
+  margin-right: 154px;
+}
+
+#previousszenario:hover{
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+#nextszenario{
+  height: 50px;
+  float: right;
+}
+
+#nextszenario:hover{
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.szenarionav{
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.szenariendotsnav{
+  list-style: none;
+  display: inline-block;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.szenariendotsnav li{
+  display: inline-block;
+  font-size: 30px;
+  margin-right: 5px;
+}
+
+.szenariodot{
+  color:#646464;
+  opacity: 0.5;
+}
+
+.active-szenariodot{
+  opacity: 1;
 }
 
 /* --- Statusreports --- */
@@ -240,10 +322,19 @@ display:none;
   background-image: url(../img/chapters/walking.jpg);
 }
 
+#chapterleitidee{
+  background-image: url(../img/chapters/leitidee.jpg);
+}
+
+#chapterkonzept{
+  background-image: url(../img/chapters/concept.jpg);
+}
+
 #FirstChapter img{
   display: block;
   width: 500px;
   margin: auto;
+  margin-top: 100px;
 }
 
 #FirstChapter p{
@@ -259,17 +350,44 @@ display:none;
 #FirstChapter{
   background-color: #777777;
   background-image: url(../img/chapters/Dieburg_Schloss_Fechenbach.jpg);
-  height: 600px;
-  width: 1100px;
+  /*height: 600px;*/
+  /*width: 1100px;*/
+  width: 100%;
+  height: 840px;
   background-repeat: no-repeat;
   background-size: cover;
   -webkit-box-shadow: inset 0 10px 50px rgba(53,53,53,0.50);
   box-shadow: inset 0 10px 50px rgba(53,53,53,0.50);
   background-position: center 0%;
-  background-attachment: scroll;
+  background-attachment: fixed;
   margin-bottom: 20px;
-  /*margin-top: -140px;*/
-  margin-left: -125px;
+  /*margin-top: -50px;*/
+  /*margin-left: -125px;*/
+  margin-top: -100px;
+}
+
+#Webapp li{
+  color: #ffffff;
+  background-color: #B7483F;
+  display: inline-block;
+  margin-left: 310px;
+  margin-top: 150px;
+  width:180px;
+  padding: 10px;
+  font-size: 15px;
+  list-style: none;
+  text-align: center;
+  border: solid 1px;
+  border-color: #B7483F;
+  box-shadow: 0px 0px 5px #646464;
+}
+
+#Webapp li:hover{
+  cursor: pointer;
+  color: #ffffff;
+  background-color: transparent;
+  border-color: #ffffff;
+  text-shadow: 0px 0px 5px #646464;
 }
 
 .trailer{
@@ -424,6 +542,7 @@ article iframe{
   padding-top: 100px;
   width: 800px;
   margin-left: 300px;
+  margin: auto;
 }
 
 /*LOADING BAR*/
@@ -602,6 +721,7 @@ svg path{
 {
   overflow: hidden;
   position: relative;
+  background-color: #f3f1e4;
 }
 
 .jspPane
