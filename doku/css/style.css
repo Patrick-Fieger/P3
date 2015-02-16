@@ -390,6 +390,30 @@ display:none;
   text-shadow: 0px 0px 5px #646464;
 }
 
+#managementsummery li{
+  color: #ffffff;
+  background-color: #B7483F;
+  display: inline-block;
+  margin-left: 300px;
+  margin-top: 50px;
+  width:auto;
+  padding: 10px;
+  font-size: 15px;
+  list-style: none;
+  text-align: center;
+  border: solid 1px;
+  border-color: #B7483F;
+  box-shadow: 0px 0px 5px #646464;
+}
+
+#managementsummery li:hover{
+  cursor: pointer;
+  color: #ffffff;
+  background-color: transparent;
+  border-color: #ffffff;
+  text-shadow: 0px 0px 5px #646464;
+}
+
 .trailer{
   display: inline-block;
   width:auto;
