@@ -94,7 +94,22 @@ $(document).on('click', '.showbeitrag_list li', function(event) {
 	$('.showbeitrag[showbeitrag="'+$(this).attr('showbeitrag')+'"]').addClass('active_')
 });
 
+var pos = 0;
+var width_slider = 800;
 
+$(document).on('click', '.slider_nav', function(event) {
+	var direction = parseInt($(this).attr('direction'));
+	if(direction == 1 && pos !== 0){
+		pos--;
+	}else if(direction == 2 && pos !== 6){
+		pos++;
+	}
+	updateSider();
+});
+
+function updateSider(){
+	$('.designintro_wrapper').animate({scrollLeft: pos * width_slider}, 400 ,'easeInOutExpo');
+}
 
 function scrollToSection(attr,id){
 	$('html,body').animate({scrollTop: $('['+attr+'="'+id+'"]').offset().top-50}, scrollSpeed ,'easeInOutExpo');
