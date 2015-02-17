@@ -49,7 +49,6 @@ function loadHtml(loaded){
 			
 	// 	}
 	// });
-	alert('wefoinwfion')
 	addAttributesToElements();
 }
 
