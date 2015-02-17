@@ -33,22 +33,24 @@ $('.pushy span').each(function(index, el) {
 
 
 function loadHtml(loaded){
-	$.get('verzeichnis/'+verzeichnisLoaded[loaded]+'.html', function(data) {
-		var container = $('<div />').html(data);
+	// $.get('verzeichnis/'+verzeichnisLoaded[loaded]+'.html', function(data) {
+	// 	var container = $('<div />').html(data);
 		
-		if(verzeichnisLoaded[loaded].length == 1) container.wrap('<div/>').attr('waybig', verzeichnisLoaded[loaded]+'.');
-		else container.wrap('<div/>').attr('way', verzeichnisLoaded[loaded]);;
+	// 	if(verzeichnisLoaded[loaded].length == 1) container.wrap('<div/>').attr('waybig', verzeichnisLoaded[loaded]+'.');
+	// 	else container.wrap('<div/>').attr('way', verzeichnisLoaded[loaded]);;
 		
-		$('#container').append(container).append(trenner);
+	// 	$('#container').append(container).append(trenner);
 		
-		if(loaded < verzeichnisLoaded.length){
-			loadHtml(++loaded);
-		}
+	// 	if(loaded < verzeichnisLoaded.length){
+	// 		loadHtml(++loaded);
+	// 	}
 
-		if(loaded == verzeichnisLoaded.length){
-			addAttributesToElements();
-		}
-	});
+	// 	if(loaded == verzeichnisLoaded.length){
+			
+	// 	}
+	// });
+	alert('wefoinwfion')
+	addAttributesToElements();
 }
 
 // Fügt Klassen und attribute für die Animationen hinzu
