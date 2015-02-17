@@ -49,7 +49,7 @@ function loadHtml(loaded){
 			
 	// 	}
 	// });
-	addAttributesToElements();
+	addAttributesToElements();	
 }
 
 // Fügt Klassen und attribute für die Animationen hinzu
