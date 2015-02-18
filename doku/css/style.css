@@ -223,10 +223,12 @@ display:none;
   display: inline-block;
 }
 .zukunft img{
-  -webkit-transform: rotate(5deg);
   margin-top: 300px;
   height: 350;
   width: 267;
+  -ms-transform: rotate(5deg);  /* IE 9 */
+  transform: rotate(5deg); /*Firefox*/
+  -webkit-transform: rotate(5deg);/*Chrome Safari*/
 }
 
 /* --- Anwendungscharakter --- */
@@ -1038,7 +1040,9 @@ th{
 }
 
 
-
+:visited{
+  text-decoration:none;
+}
 
 
 
